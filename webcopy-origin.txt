@@ -1,0 +1,76 @@
+Uri: https://devsyedmohsin.netlify.app/
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\index.htm
+Content Type: text/html
+
+Uri: https://devsyedmohsin.netlify.app/fonts/HKGrotesk-Regular.woff
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\fonts\HKGrotesk-Regular.woff
+Content Type: application/font-woff
+
+Uri: https://devsyedmohsin.netlify.app/fonts/Jost-Regular.ttf
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\fonts\Jost-Regular.ttf
+Content Type: font/ttf
+
+Uri: https://devsyedmohsin.netlify.app/images/adocs-web.png
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\images\adocs-web.png
+Content Type: image/png
+
+Uri: https://devsyedmohsin.netlify.app/images/arrow-up.svg
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\images\arrow-up.svg
+Content Type: image/svg+xml
+
+Uri: https://devsyedmohsin.netlify.app/images/David.jpg
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\images\David.jpg
+Content Type: image/jpeg
+
+Uri: https://devsyedmohsin.netlify.app/images/dev-black.png
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\images\dev-black.png
+Content Type: image/png
+
+Uri: https://devsyedmohsin.netlify.app/images/favicon.png
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\images\favicon.png
+Content Type: image/png
+
+Uri: https://devsyedmohsin.netlify.app/images/foxvalley-homebuyers.png
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\images\foxvalley-homebuyers.png
+Content Type: image/png
+
+Uri: https://devsyedmohsin.netlify.app/images/foxvalley-homebuyers.svg
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\images\foxvalley-homebuyers.svg
+Content Type: image/svg+xml
+
+Uri: https://devsyedmohsin.netlify.app/images/github.png
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\images\github.png
+Content Type: image/png
+
+Uri: https://devsyedmohsin.netlify.app/images/github.svg
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\images\github.svg
+Content Type: image/svg+xml
+
+Uri: https://devsyedmohsin.netlify.app/images/header.jpg
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\images\header.jpg
+Content Type: image/jpeg
+
+Uri: https://devsyedmohsin.netlify.app/images/linkedin.svg
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\images\linkedin.svg
+Content Type: image/svg+xml
+
+Uri: https://devsyedmohsin.netlify.app/images/nisar.jpg
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\images\nisar.jpg
+Content Type: image/jpeg
+
+Uri: https://devsyedmohsin.netlify.app/images/portfolio-template.png
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\images\portfolio-template.png
+Content Type: image/png
+
+Uri: https://devsyedmohsin.netlify.app/images/syed-mohsin.jpg
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\images\syed-mohsin.jpg
+Content Type: image/jpeg
+
+Uri: https://devsyedmohsin.netlify.app/index.css
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\index.css
+Content Type: text/css
+
+Uri: https://devsyedmohsin.netlify.app/index.js
+File Name: C:\Users\iamra\OneDrive\Desktop\merika_static_cleaned\devsyedmohsin.netlify.app\index.js
+Content Type: application/javascript
+
