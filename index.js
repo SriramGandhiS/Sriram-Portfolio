@@ -1,46 +1,34 @@
-/* -----------------------------------------
-  Have focus outline only for keyboard users 
- ---------------------------------------- */
+// --- Cube Animation ---
+const cubeCanvas = document.getElementById("cube-canvas");
+if(cubeCanvas){
+  const renderer = new THREE.WebGLRenderer({ canvas: cubeCanvas, alpha: true });
+  renderer.setSize(cubeCanvas.clientWidth, cubeCanvas.clientHeight);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, cubeCanvas.clientWidth / cubeCanvas.clientHeight, 0.1, 1000);
+  camera.position.z = 5;
 
-const handleFirstTab = (e) => {
-  if (e.key === "Tab") {
-    document.body.classList.add("user-is-tabbing");
+  const geometry = new THREE.BoxGeometry();
+  const material = new THREE.MeshStandardMaterial({ color: 0xff4da6 });
+  const cube = new THREE.Mesh(geometry, material);
+  scene.add(cube);
 
-    window.removeEventListener("keydown", handleFirstTab);
-    window.addEventListener("mousedown", handleMouseDownOnce);
+  const light = new THREE.PointLight(0xffffff, 1);
+  light.position.set(5,5,5);
+  scene.add(light);
+
+  function animateCube(){
+    requestAnimationFrame(animateCube);
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+    renderer.render(scene, camera);
   }
-};
+  animateCube();
+}
 
-const handleMouseDownOnce = () => {
-  document.body.classList.remove("user-is-tabbing");
-
-  window.removeEventListener("mousedown", handleMouseDownOnce);
-  window.addEventListener("keydown", handleFirstTab);
-};
-
-window.addEventListener("keydown", handleFirstTab);
-
-const backToTopButton = document.querySelector(".back-to-top");
-let isBackToTopRendered = false;
-
-let alterStyles = (isBackToTopRendered) => {
-  backToTopButton.style.visibility = isBackToTopRendered ? "visible" : "hidden";
-  backToTopButton.style.opacity = isBackToTopRendered ? 1 : 0;
-  backToTopButton.style.transform = isBackToTopRendered
-    ? "scale(1)"
-    : "scale(0)";
-};
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 700) {
-    isBackToTopRendered = true;
-    alterStyles(isBackToTopRendered);
-  } else {
-    isBackToTopRendered = false;
-    alterStyles(isBackToTopRendered);
-  }
+// --- Coming Soon Popup ---
+document.querySelectorAll(".coming-soon").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    alert("🚀 Coming Soon!");
+  });
 });
-
-const yearEl = document.querySelector(".year");
-
-yearEl.textContent = new Date().getFullYear();
