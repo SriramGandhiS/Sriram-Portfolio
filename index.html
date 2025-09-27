@@ -1,169 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" type="image/png" href="images/favicon.png">
-  <title>Sriram S | A Passionate Developer from India</title>
-  <meta name="description" content="Welcome to my portfolio. I am a passionate developer and certified programmer from India. Explore my projects, coding achievements, and certifications. Contact me for collaborations or inquiries.">
+  <title>Sriram | Portfolio</title>
   <link rel="stylesheet" href="index.css">
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
 </head>
-
 <body>
-  <!-- ***** Header ***** -->
-  <header class="header" role="banner" id="top">
-    <div class="row">
-      <nav class="nav" role="navigation">
-        <ul class="nav__items">
-          <li class="nav__item"><a href="#work" class="nav__link">Projects</a></li>
-          <li class="nav__item"><a href="#certifications" class="nav__link">Certifications</a></li>
-          <li class="nav__item"><a href="#blog" class="nav__link">Blog</a></li>
-          <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="header__text-box row">
-      <div class="header__text">
-        <h1 class="heading-primary"><span>Sriram S</span></h1>
-        <p>A Passionate Developer from India</p>
-        <a href="#contact" class="btn btn--pink">Get in touch</a>
-      </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#home" class="nav-item">Home</a></li>
+      <li><a href="#projects" class="nav-item">Projects</a></li>
+      <li><a href="#about" class="nav-item">About</a></li>
+      <li><a href="#contact" class="nav-item">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="hero" id="home">
+    <div class="cube"></div>
+    <h1 class="hero-name">Sriram <span class="green-symbol">&lt;/&gt;</span></h1>
+    <p class="tagline">Front-End & Back-End Developer | UI/UX Learner</p>
+    <a href="resume.pdf" download class="resume-btn">Download Resume</a>
+    <a href="certifications.pdf" download class="resume-btn">Certifications</a>
+
+    <!-- Contact Icons -->
+    <div class="hero-contact-icons">
+      <a href="https://github.com/SriramGandhiS" target="_blank">
+        <img src="images/github.png" alt="GitHub">
+      </a>
+      <a href="https://www.linkedin.com/in/sriram-s-432a99296" target="_blank">
+        <img src="images/linkedin.png" alt="LinkedIn">
+      </a>
+      <a href="mailto:iamramm8@gmail.com">
+        <img src="images/mail.png" alt="Email">
+      </a>
     </div>
   </header>
 
-  <main role="main">
-    <!-- ***** Work ***** -->
-    <section class="work" id="work">
-      <div class="row">
-        <h2>Projects</h2>
-        <div class="work__boxes">
-          <div class="work__box">
-            <div class="work__text">
-              <h3>Tic Tac Toe Game</h3>
-              <p>A classic two-player game built using Java Swing with a clean and intuitive GUI.</p>
-              <ul class="work__list">
-                <li>Java</li>
-                <li>Swing</li>
-              </ul>
-              <div class="work__links">
-                <a href="https://github.com/SriramGandhiS/Study-and-Code" target="_blank" rel="noopener" class="link__text">
-                  View on GitHub <span>&rarr;</span>
-                </a>
-              </div>
-            </div>
-          </div>
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hi, I’m Sriram 👋. Currently pursuing Computer Science Engineering at PSNACET.  
+      I’m passionate about learning UI/UX design, Front-End, and Back-End development.  
+      Over the last 100+ days, I’ve built multiple projects and gained hands-on experience in Java, Python, Django, and full-stack web development.
+    </p>
+    <p>
+      🔹 Created 6+ projects including a Password Generator App, Tic Tac Toe in Java Swing, and this portfolio website.  
+      🔹 Experienced with HTML, CSS, JavaScript, Django, and design principles.  
+      🔹 Strong problem-solving skills and continuously exploring new technologies.  
+    </p>
+    <img src="images/me.jpg" alt="Sriram" class="about-photo">
+  </section>
 
-          <div class="work__box">
-            <div class="work__text">
-              <h3>Password Generator</h3>
-              <p>A secure password generator built in Java with customizable criteria.</p>
-              <ul class="work__list">
-                <li>Java</li>
-              </ul>
-              <div class="work__links">
-                <a href="https://github.com/SriramGandhiS/Study-and-Code" target="_blank" rel="noopener" class="link__text">
-                  View on GitHub <span>&rarr;</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="work__box">
-            <div class="work__text">
-              <h3>Various Coding Snippets</h3>
-              <p>Includes algorithm implementations, mini utilities, and logic-building exercises hosted on GitHub.</p>
-              <ul class="work__list">
-                <li>Java</li>
-                <li>Problem Solving</li>
-              </ul>
-              <div class="work__links">
-                <a href="https://github.com/SriramGandhiS/Study-and-Code" target="_blank" rel="noopener" class="link__text">
-                  View on GitHub <span>&rarr;</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
+  <!-- PROJECTS SECTION -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Password Generator (Java)</h3>
+        <a href="https://github.com/SriramGandhiS/Study-and-Code/releases/tag/v1.0.0" target="_blank">View Project</a>
       </div>
-    </section>
-
-    <!-- ***** Certifications ***** -->
-    <section class="certifications" id="certifications">
-      <div class="row">
-        <h2>Certifications & Achievements</h2>
-        <ul>
-          <li>Certified Programmer</li>
-          <li>Multiple certificates from HackerRank for problem-solving and language-specific skills</li>
-          <li>Advanced coding certifications</li>
-          <li>Active participant in coding competitions and problem-solving platforms</li>
-        </ul>
+      <div class="project-card">
+        <h3>Tic Tac Toe (Java Swing)</h3>
+        <a href="https://github.com/SriramGandhiS/Study-and-Code/releases" target="_blank">View Project</a>
       </div>
-    </section>
-
-    <!-- ***** About ***** -->
-    <section class="about" id="about">
-      <div class="row">
-        <h2>About Me</h2>
-        <div class="about__content">
-          <div class="about__photo-container">
-            <img class="about__photo" src="images/sriram-photo.jpg" alt="Sriram S">
-          </div>
-          <div class="about__text">
-            <p>
-              I'm a passionate developer and certified programmer with hands-on experience in building small to intermediate projects. I actively participate in coding platforms and have earned various certifications that showcase my programming capabilities.
-            </p>
-            <p>
-              My goal is to build elegant and efficient software solutions, contribute to open-source, and continuously upgrade my technical skills to stay ahead in the software development field.
-            </p>
-          </div>
-        </div>
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <a href="https://sriram-portfolio-95n2.onrender.com" target="_blank">View Website</a>
       </div>
-    </section>
-
-    <!-- ***** Contact ***** -->
-    <section class="contact" id="contact">
-      <div class="row">
-        <h2>Get in Touch</h2>
-        <div class="contact__info">
-          <p>
-            Have questions, ideas, or want to collaborate on a project? Feel free to contact me via email.
-          </p>
-          <a href="mailto:iamramm8@gmail.com" class="btn">iamramm8@gmail.com</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ***** Footer ***** -->
-  <footer class="footer">
-    <div class="row">
-      <div class="footer__content">
-        <ul class="footer__social-links">
-          <li class="footer__social-link-item">
-            <a href="https://www.linkedin.com/in/sriram-s-432a99296">
-              <img src="images/linkedin.svg" title="LinkedIn" class="footer__social-image" alt="LinkedIn">
-            </a>
-          </li>
-          <li class="footer__social-link-item">
-            <a href="https://github.com/SriramGandhiS/Study-and-Code" title="GitHub">
-              <img src="images/github.png" class="footer__social-image" alt="GitHub">
-            </a>
-          </li>
-        </ul>
-        <p> &copy;<span class="year">2025</span>All   rights reserved | Contact:
-
-          <a href="mailto:iamramm8@gmail.com" class="link">iamramm8@gmail.com</a>
-        </p>
+      <div class="project-card coming-soon">
+        <h3>Other Projects</h3>
+        <a href="#">Coming Soon</a>
       </div>
     </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:iamramm8@gmail.com">iamramm8@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/SriramGandhiS" target="_blank">github.com/SriramGandhiS</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/sriram-s-432a99296" target="_blank">linkedin.com/in/sriram-s-432a99296</a></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Sriram. All Rights Reserved.</p>
   </footer>
 
-  <a href="#top" class="back-to-top" title="Back to Top">
-    <img src="images/arrow-up.svg" alt="Back to Top" class="back-to-top__image">
-  </a>
   <script src="index.js"></script>
 </body>
-
 </html>
+
