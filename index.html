@@ -130,5 +130,69 @@
   &copy; 2025 Sriram. All rights reserved.
 </footer>
 
+<!-- MINIMAL PINK MOUSE PARTICLES -->
+<script>
+const canvas = document.createElement('canvas');
+canvas.id = 'mouseParticles';
+canvas.style.position = 'fixed';
+canvas.style.top = '0';
+canvas.style.left = '0';
+canvas.style.pointerEvents = 'none';
+canvas.style.zIndex = '9999';
+document.body.appendChild(canvas);
+
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+class Particle {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.size = Math.random() * 2 + 1;
+    this.speedX = (Math.random() - 0.5) * 0.5;
+    this.speedY = Math.random() * 0.5 - 0.25;
+    this.life = 0.55; // 55% opacity
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.life -= 0.005;
+  }
+  draw() {
+    const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size*2);
+    gradient.addColorStop(0, `rgba(255,105,180,${this.life})`);
+    gradient.addColorStop(1, `rgba(255,105,180,0)`);
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size*2, 0, Math.PI*2);
+    ctx.fill();
+  }
+}
+
+function animate() {
+  ctx.clearRect(0,0,canvas.width, canvas.height);
+  particles.forEach((p,i)=>{
+    p.update();
+    p.draw();
+    if (p.life <=0) particles.splice(i,1);
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+
+window.addEventListener('mousemove', e=>{
+  for (let i=0; i<6; i++) {
+    particles.push(new Particle(e.x, e.y));
+  }
+});
+</script>
+
 </body>
 </html>
