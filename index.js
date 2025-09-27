@@ -32,3 +32,4 @@ document.querySelectorAll(".coming-soon").forEach((btn) => {
     alert("🚀 Coming Soon!");
   });
 });
+
