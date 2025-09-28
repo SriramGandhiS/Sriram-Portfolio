@@ -21,7 +21,7 @@
     </ul>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <header class="hero" id="home">
     <div class="cube"></div>
     <h1 class="hero-name">Sriram <span class="green-symbol">&lt;/&gt;</span></h1>
@@ -29,13 +29,13 @@
     <a href="resume.pdf" download class="resume-btn">Download Resume</a>
     <a href="certifications.pdf" download class="resume-btn">Certifications</a>
 
-    <!-- Contact Icons -->
+    <!-- Social Icons -->
     <div class="hero-contact-icons">
       <a href="https://github.com/SriramGandhiS" target="_blank">
         <img src="images/github.png" alt="GitHub">
       </a>
       <a href="https://www.linkedin.com/in/sriram-s-432a99296" target="_blank">
-        <img src="images/linkedin.png" alt="LinkedIn">
+        <img src="images/linked.png" alt="LinkedIn">
       </a>
       <a href="mailto:iamramm8@gmail.com">
         <img src="images/mail.png" alt="Email">
@@ -43,23 +43,47 @@
     </div>
   </header>
 
-  <!-- ABOUT SECTION -->
+  <!-- ABOUT -->
   <section id="about">
     <h2>About Me</h2>
-    <p>
-      Hi, I’m Sriram 👋. Currently pursuing Computer Science Engineering at PSNACET.  
-      I’m passionate about learning UI/UX design, Front-End, and Back-End development.  
-      Over the last 100+ days, I’ve built multiple projects and gained hands-on experience in Java, Python, Django, and full-stack web development.
-    </p>
-    <p>
-      🔹 Created 6+ projects including a Password Generator App, Tic Tac Toe in Java Swing, and this portfolio website.  
-      🔹 Experienced with HTML, CSS, JavaScript, Django, and design principles.  
-      🔹 Strong problem-solving skills and continuously exploring new technologies.  
-    </p>
-    <img src="images/me.jpg" alt="Sriram" class="about-photo">
+    <div class="about-wrapper">
+      <div class="about-text">
+        <p>
+          Hi, I’m Sriram 👋. Currently pursuing Computer Science Engineering at PSNACET.  
+          I’m passionate about learning UI/UX design, Front-End, and Back-End development.  
+          Over the last 100+ days, I’ve built multiple projects and gained hands-on experience in Java, Python, Django, and full-stack web development.
+        </p>
+        <p>
+          🔹 Created 6+ projects including a Password Generator App, Tic Tac Toe in Java Swing, and this portfolio website.  
+          🔹 Experienced with HTML, CSS, JavaScript, Django, and design principles.  
+          🔹 Strong problem-solving skills and continuously exploring new technologies.  
+        </p>
+
+        <div class="skills-container">
+          <div class="skill-card">
+            <div class="skill-front">Python</div>
+            <div class="skill-back">Intermediate</div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-front">Java</div>
+            <div class="skill-back">Intermediate</div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-front">HTML</div>
+            <div class="skill-back">Advanced</div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-front">CSS</div>
+            <div class="skill-back">Advanced</div>
+          </div>
+        </div>
+      </div>
+
+      <img src="images/me.jpg" alt="Sriram" class="about-photo">
+    </div>
   </section>
 
-  <!-- PROJECTS SECTION -->
+  <!-- PROJECTS -->
   <section id="projects">
     <h2>Projects</h2>
     <div class="projects-grid">
@@ -82,19 +106,100 @@
     </div>
   </section>
 
-  <!-- CONTACT SECTION -->
+  <!-- CONTACT -->
   <section id="contact">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:iamramm8@gmail.com">iamramm8@gmail.com</a></p>
-    <p>GitHub: <a href="https://github.com/SriramGandhiS" target="_blank">github.com/SriramGandhiS</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/sriram-s-432a99296" target="_blank">linkedin.com/in/sriram-s-432a99296</a></p>
+    <div class="contact-wrapper">
+      <div class="contact-left">
+        <p>
+          <a href="mailto:iamramm8@gmail.com" class="glow-mail">
+            <img src="images/mail.png" alt="Email" class="contact-icon"> iamramm8@gmail.com
+          </a>
+        </p>
+        <p><span class="label">Mobile:</span> 9361123688</p>
+      </div>
+      <div class="contact-right">
+        <p><span class="label">Place:</span> Madurai, Tamil Nadu, India</p>
+        <p><span class="label">Current:</span> Computer Science Engineering Student @ PSNACET</p>
+      </div>
+    </div>
+
+    <div class="contact-social">
+      <div class="social-item">
+        <a href="https://github.com/SriramGandhiS" target="_blank">
+          <img src="images/github.png" alt="GitHub">
+        </a>
+        <p>GitHub</p>
+      </div>
+      <div class="social-item">
+        <a href="https://www.linkedin.com/in/sriram-s-432a99296" target="_blank">
+          <img src="images/linked.png" alt="LinkedIn">
+        </a>
+        <p>LinkedIn</p>
+      </div>
+      <div class="social-item">
+        <a href="mailto:iamramm8@gmail.com">
+          <img src="images/mail.png" alt="Email">
+        </a>
+        <p>Email</p>
+      </div>
+    </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2025 Sriram. All Rights Reserved.</p>
+    &copy; 2025 Sriram. All rights reserved.
   </footer>
 
-  <script src="index.js"></script>
+  <!-- MOUSE PARTICLES -->
+  <canvas id="mouseParticles"></canvas>
+  <script>
+    const canvas = document.getElementById('mouseParticles');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    class Particle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = Math.random() * 0.5 - 0.25;
+        this.life = 0.55;
+      }
+      update() { this.x += this.speedX; this.y += this.speedY; this.life -= 0.005; }
+      draw() {
+        const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size*2);
+        gradient.addColorStop(0, `rgba(255,105,180,${this.life})`);
+        gradient.addColorStop(1, `rgba(255,105,180,0)`);
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size*2, 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p, i) => {
+        p.update();
+        p.draw();
+        if (p.life <= 0) particles.splice(i,1);
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    window.addEventListener('mousemove', e => {
+      for (let i=0;i<6;i++) particles.push(new Particle(e.x,e.y));
+    });
+  </script>
 </body>
 </html>
