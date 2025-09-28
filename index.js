@@ -1,34 +1,123 @@
-// --- Cube Animation ---
-const cubeCanvas = document.getElementById("cube-canvas");
-if(cubeCanvas){
-  const renderer = new THREE.WebGLRenderer({ canvas: cubeCanvas, alpha: true });
-  renderer.setSize(cubeCanvas.clientWidth, cubeCanvas.clientHeight);
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(45, cubeCanvas.clientWidth / cubeCanvas.clientHeight, 0.1, 1000);
-  camera.position.z = 5;
+// =======================
+// Mouse Particle Effect
+// =======================
+const canvas = document.createElement('canvas');
+canvas.id = 'mouseParticles';
+canvas.style.position = 'fixed';
+canvas.style.top = '0';
+canvas.style.left = '0';
+canvas.style.pointerEvents = 'none';
+canvas.style.zIndex = '9999';
+document.body.appendChild(canvas);
 
-  const geometry = new THREE.BoxGeometry();
-  const material = new THREE.MeshStandardMaterial({ color: 0xff4da6 });
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
+const ctx = canvas.getContext('2d');
+let particles = [];
 
-  const light = new THREE.PointLight(0xffffff, 1);
-  light.position.set(5,5,5);
-  scene.add(light);
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
 
-  function animateCube(){
-    requestAnimationFrame(animateCube);
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-    renderer.render(scene, camera);
+class Particle {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.size = Math.random() * 2 + 1;
+    this.speedX = (Math.random() - 0.5) * 0.5;
+    this.speedY = Math.random() * 0.5 - 0.25;
+    this.life = 0.55;
   }
-  animateCube();
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.life -= 0.005;
+  }
+  draw() {
+    const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 2);
+    gradient.addColorStop(0, `rgba(255,105,180,${this.life})`);
+    gradient.addColorStop(1, `rgba(255,105,180,0)`);
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size * 2, 0, Math.PI * 2);
+    ctx.fill();
+  }
 }
 
-// --- Coming Soon Popup ---
-document.querySelectorAll(".coming-soon").forEach((btn) => {
-  btn.addEventListener("click", (e) => {
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach((p, i) => {
+    p.update();
+    p.draw();
+    if (p.life <= 0) particles.splice(i, 1);
+  });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+window.addEventListener('mousemove', e => {
+  for (let i = 0; i < 6; i++) {
+    particles.push(new Particle(e.x, e.y));
+  }
+});
+
+// =======================
+// Smooth Scroll
+// =======================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
     e.preventDefault();
-    alert("🚀 Coming Soon!");
+    document.querySelector(this.getAttribute("href")).scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+});
+
+// =======================
+// GSAP Animations
+// =======================
+window.addEventListener("load", () => {
+  // Hero section intro
+  gsap.from(".hero h1", { y: 50, opacity: 0, duration: 1 });
+  gsap.from(".hero p", { y: 50, opacity: 0, duration: 1, delay: 0.3 });
+  gsap.from(".hero img", { scale: 0.8, opacity: 0, duration: 1, delay: 0.6 });
+
+  // Section fade-ins
+  gsap.utils.toArray("section").forEach(section => {
+    gsap.from(section, {
+      scrollTrigger: {
+        trigger: section,
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1
+    });
+  });
+});
+
+// =======================
+// Navbar Active Link
+// =======================
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav ul li a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 80;
+    if (pageYOffset >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === `#${current}`) {
+      link.classList.add("active");
+    }
   });
 });
