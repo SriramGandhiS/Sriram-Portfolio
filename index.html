@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sriram | Portfolio</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#home" class="nav-item">Home</a></li>
+      <li><a href="#projects" class="nav-item">Projects</a></li>
+      <li><a href="#about" class="nav-item">About</a></li>
+      <li><a href="#contact" class="nav-item">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="cube"></div>
+    <h1 class="hero-name">Sriram <span class="green-symbol">&lt;/&gt;</span></h1>
+    <p class="tagline">Front-End & Back-End Developer | UI/UX Learner</p>
+
+    <div class="cta-group">
+      <a href="#" class="resume-btn" id="resumeTriggerBtn">Resume</a>
+      <a href="#" class="resume-btn" id="certBtn">Certifications</a>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="hero-contact-icons">
+      <a href="https://github.com/SriramGandhiS" target="_blank">
+        <img src="images/github.png" alt="GitHub">
+      </a>
+      <a href="https://www.linkedin.com/in/sriram-s-432a99296" target="_blank">
+        <img src="images/linked.png" alt="LinkedIn">
+      </a>
+      <a href="mailto:iamramm8@gmail.com">
+        <img src="images/mail.png" alt="Email">
+      </a>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-wrapper">
+      <div class="about-text">
+        <p>
+          Hi, I’m Sriram 👋. Currently pursuing Computer Science Engineering at PSNACET.
+          I’m passionate about learning UI/UX design, Front-End, and Back-End development.
+          Over the last 100+ days, I’ve built multiple projects using Java, Python, Django, and modern web tech.
+        </p>
+
+        <!-- Skills -->
+        <div class="skills-container">
+          <div class="skill-card">
+            <div class="skill-front">Python</div>
+            <div class="skill-back">Intermediate</div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-front">Java</div>
+            <div class="skill-back">Intermediate</div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-front">HTML</div>
+            <div class="skill-back">Advanced</div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-front">CSS</div>
+            <div class="skill-back">Advanced</div>
+          </div>
+        </div>
+      </div>
+      <img src="images/me.jpg" alt="Sriram" class="about-photo">
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>Personal Portfolio</p>
+        <a href="https://sriram-portfolio-95n2.onrender.com" target="_blank" class="glow-link">View Live Project</a>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card under-process">
+        <h3>Smart Bus Tracking</h3>
+        <span class="status-badge">Under Process</span>
+        <p>Android Application (Java/Firebase)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-container">
+      <div class="contact-3d-card">
+        <div class="contact-content-inner">
+          <div class="contact-info">
+            <div class="info-row">
+              <img src="images/mail.png" alt="Email" class="contact-icon-small">
+              <a href="mailto:iamramm8@gmail.com" class="glow-mail">iamramm8@gmail.com</a>
+            </div>
+            <div class="info-row">
+              <span class="label-icon">📱</span>
+              <span>+91 9361123688</span>
+            </div>
+            <div class="info-row">
+              <span class="label-icon">📍</span>
+              <span>Madurai, Tamil Nadu, India</span>
+            </div>
+            <div class="info-row">
+              <span class="label-icon">🎓</span>
+              <span>CSE Student @ PSNACET</span>
+            </div>
+          </div>
+
+          <div class="contact-actions">
+            <a href="mailto:iamramm8@gmail.com" class="hire-me-btn">Hire Me</a>
+            <button id="rejectBtn" class="reject-btn">Reject</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2025 Sriram. All rights reserved.
+  </footer>
+
+  <!-- MODALS (Hidden by default) -->
+
+  <!-- CERTIFICATIONS MODAL -->
+  <div class="modal-overlay" id="certModal">
+    <div class="cert-modal">
+      <span class="close-modal">&times;</span>
+      <!-- View 1: Grid of Companies -->
+      <div class="cert-grid-view" id="certGridView">
+        <h2>My Certifications</h2>
+        <p class="cert-subtitle">Select a company to view credentials</p>
+        <div class="company-grid">
+          <div class="company-card" data-company="AWS">
+            <div class="card-inner">
+              <div class="card-icon">☁️</div>
+              <h3>AWS</h3>
+              <p>Cloud Practitioner & Solutions Architect</p>
+            </div>
+          </div>
+          <div class="company-card" data-company="MongoDB">
+            <div class="card-inner">
+              <div class="card-icon">🍃</div>
+              <h3>MongoDB</h3>
+              <p>Database Management & Aggregations</p>
+            </div>
+          </div>
+          <div class="company-card" data-company="Internshala">
+            <div class="card-inner">
+              <div class="card-icon">🎓</div>
+              <h3>Internshala</h3>
+              <p>Web Development Trainings</p>
+            </div>
+          </div>
+          <div class="company-card" data-company="HackerRank">
+            <div class="card-inner">
+              <div class="card-icon">💻</div>
+              <h3>HackerRank</h3>
+              <p>Problem Solving & Python</p>
+            </div>
+          </div>
+          <div class="company-card" data-company="Arduino">
+            <div class="card-inner">
+              <div class="card-icon">🤖</div>
+              <h3>Arduino</h3>
+              <p>IoT & Robotics</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- View 2: Detail Viewer -->
+      <div class="cert-detail-view" id="certDetailView">
+        <button class="back-btn" id="backToGrid">← Back</button>
+        <div class="cert-container">
+          <div class="cert-sidebar">
+            <h3 id="selectedCompanyTitle">Company</h3>
+            <ul class="cert-list" id="dynamicCertList"></ul>
+          </div>
+          <div class="cert-viewer">
+            <iframe src="" id="certFrame" frameborder="0"></iframe>
+            <div id="placeholderText">
+              <p>Select a certificate to view</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESUME OPTIONS MODAL -->
+  <div class="modal-overlay" id="resumeModal">
+    <div class="resume-modal-content">
+      <span class="close-modal close-resume">&times;</span>
+      <h2>Resume Options</h2>
+      <div class="resume-options-grid">
+        <div class="resume-card" id="viewResumeCard">
+          <div class="card-inner">
+            <div class="card-icon">👁️</div>
+            <h3>View</h3>
+            <p>Read online without downloading</p>
+          </div>
+        </div>
+        <a href="Sriram_Resume.pdf" download class="resume-card-link">
+          <div class="resume-card" id="downloadResumeCard">
+            <div class="card-inner">
+              <div class="card-icon">⬇️</div>
+              <h3>Download</h3>
+              <p>Save to your device</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESUME VIEWER MODAL -->
+  <div class="modal-overlay" id="resumeViewerModal">
+    <div class="cert-modal" style="height: 90vh; max-width: 1200px; width: 95%; display: flex; flex-direction: column;">
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #111; border-bottom: 1px solid #333;">
+        <h3 style="margin: 0; color: #fff;">My Resume</h3>
+        <div style="display: flex; gap: 15px; align-items: center;">
+          <a href="Sriram_Resume.pdf" target="_blank"
+            style="color: #39ff14; text-decoration: none; font-size: 0.9rem;">Open in New Tab ↗</a>
+          <span class="close-modal close-resume-viewer"
+            style="position: static; transform: none; width: auto; height: auto;">&times;</span>
+        </div>
+      </div>
+      <div class="cert-viewer" style="width: 100%; flex: 1; padding: 0; background: #000;">
+        <embed src="" id="resumeFrame" type="application/pdf" width="100%" height="100%"
+          style="border-radius: 0 0 10px 10px;" />
+      </div>
+    </div>
+  </div>
+
+  <canvas id="mouseParticles"></canvas>
+  <script src="index.js"></script>
+</body>
+
+</html>
