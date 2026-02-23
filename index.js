@@ -127,7 +127,23 @@ const certModal = document.getElementById('certModal');
 const closeBtn = document.querySelector('.close-modal');
 
 // Data
-
+const certData = {
+  "AWS": [
+    { name: "AWS Academy Graduate", file: "certificates/aws_real.pdf" }
+  ],
+  "MongoDB": [
+    { name: "MongoDB Basics", file: "certificates/mongodb_real.pdf" }
+  ],
+  "HackerRank": [
+    { name: "HackerRank Certificate", file: "certificates/hackerrank_real.pdf" }
+  ],
+  "Arduino": [
+    { name: "Participant Certificate", file: "certificates/arduino_real.pdf" }
+  ],
+  "Internshala": [
+    { name: "Web Development", file: "certificates/internshala_real.pdf" }
+  ]
+};
 // Open/Close Cert Modal
 if (certBtn) {
   certBtn.addEventListener('click', (e) => {
