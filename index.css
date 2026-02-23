@@ -1939,54 +1939,84 @@ iframe.show {
     padding: 4px 8px !important;
   }
 
-  /* Hero: stack content vertically, 3D model below text */
+  /* Hero: Stacked & Centered for Mobile */
   .hero {
     flex-direction: column;
-    padding: 90px 16px 40px;
+    padding: 100px 16px 40px;
     height: auto;
     max-width: 100%;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
   }
 
   .hero-container {
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
-    align-items: flex-start;
-    gap: 10px;
+    align-items: center;
+    text-align: center;
+    gap: 0;
   }
 
+  .hero-accent {
+    display: none;
+  }
+
+  /* Hide the vertical line */
+
   .hero-content {
-    text-align: left;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero-name {
-    font-size: 2.4rem;
+    font-size: 2.6rem;
+    line-height: 1.15;
     word-break: break-word;
   }
 
   .tagline {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     margin: 12px 0 24px;
+    text-align: center;
   }
 
+  /* Center buttons and social icons */
   .cta-group {
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
+    margin-bottom: 25px;
   }
 
-  /* Restore 3D model on mobile — compact height, flows below text */
+  .resume-btn {
+    padding: 12px 24px;
+    font-size: 0.85rem;
+  }
+
+  .hero-contact-icons {
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Restore 3D model on mobile: robust flex block below text */
   .hero-3d-model {
     position: relative !important;
+    display: block !important;
     right: auto !important;
-    top: auto !important;
     left: auto !important;
+    top: auto !important;
+    bottom: auto !important;
     transform: none !important;
     width: 100%;
-    height: 260px;
-    margin: 15px auto 0;
+    max-width: 350px;
+    height: 300px;
+    margin: 0 auto;
     order: 2;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   /* Projects: single column, no overflow */
