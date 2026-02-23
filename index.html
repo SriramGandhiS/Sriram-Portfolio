@@ -464,73 +464,57 @@
         </div>
 
       </div>
-      <!-- View 2: Detail Viewer (Kept for fallback or single view) -->
-      <div class="cert-detail-view" id="certDetailView">
-        <button class="back-btn" id="backToGrid">← Back</button>
-        <div class="cert-container">
-          <div class="cert-sidebar">
-            <h3 id="selectedCompanyTitle">Company</h3>
-            <ul class="cert-list" id="dynamicCertList"></ul>
-          </div>
-          <div class="cert-viewer">
-            <iframe src="" id="certFrame" frameborder="0"></iframe>
-            <div id="placeholderText">
-              <p>Select a certificate to view</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <!-- RESUME OPTIONS MODAL -->
-  <div class="modal-overlay" id="resumeModal">
-    <div class="resume-modal-content">
-      <span class="close-modal close-resume">&times;</span>
-      <h2>Resume Options</h2>
-      <div class="resume-options-grid">
-        <div class="resume-card" id="viewResumeCard">
-          <div class="card-inner">
-            <div class="card-icon">👁️</div>
-            <h3>View</h3>
-            <p>Read online without downloading</p>
-          </div>
-        </div>
-        <a href="Sriram_Resume.pdf" download class="resume-card-link">
-          <div class="resume-card" id="downloadResumeCard">
+    <!-- RESUME OPTIONS MODAL -->
+    <div class="modal-overlay" id="resumeModal">
+      <div class="resume-modal-content">
+        <span class="close-modal close-resume">&times;</span>
+        <h2>Resume Options</h2>
+        <div class="resume-options-grid">
+          <div class="resume-card" id="viewResumeCard">
             <div class="card-inner">
-              <div class="card-icon">⬇️</div>
-              <h3>Download</h3>
-              <p>Save to your device</p>
+              <div class="card-icon">👁️</div>
+              <h3>View</h3>
+              <p>Read online without downloading</p>
             </div>
           </div>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- RESUME VIEWER MODAL -->
-  <div class="modal-overlay" id="resumeViewerModal">
-    <div class="cert-modal" style="height: 90vh; max-width: 1200px; width: 95%; display: flex; flex-direction: column;">
-      <div
-        style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #111; border-bottom: 1px solid #333;">
-        <h3 style="margin: 0; color: #fff;">My Resume</h3>
-        <div style="display: flex; gap: 15px; align-items: center;">
-          <a href="Sriram_Resume.pdf" target="_blank"
-            style="color: #39ff14; text-decoration: none; font-size: 0.9rem;">Open in New Tab ↗</a>
-          <span class="close-modal close-resume-viewer"
-            style="position: static; transform: none; width: auto; height: auto;">&times;</span>
+          <a href="Sriram_Resume.pdf" download class="resume-card-link">
+            <div class="resume-card" id="downloadResumeCard">
+              <div class="card-inner">
+                <div class="card-icon">⬇️</div>
+                <h3>Download</h3>
+                <p>Save to your device</p>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
-      <div class="cert-viewer" style="width: 100%; flex: 1; padding: 0; background: #000;">
-        <embed src="" id="resumeFrame" type="application/pdf" width="100%" height="100%"
-          style="border-radius: 0 0 10px 10px;" />
+    </div>
+
+    <!-- RESUME VIEWER MODAL -->
+    <div class="modal-overlay" id="resumeViewerModal">
+      <div class="cert-modal"
+        style="height: 90vh; max-width: 1200px; width: 95%; display: flex; flex-direction: column;">
+        <div
+          style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #111; border-bottom: 1px solid #333;">
+          <h3 style="margin: 0; color: #fff;">My Resume</h3>
+          <div style="display: flex; gap: 15px; align-items: center;">
+            <a href="Sriram_Resume.pdf" target="_blank"
+              style="color: #39ff14; text-decoration: none; font-size: 0.9rem;">Open in New Tab ↗</a>
+            <span class="close-modal close-resume-viewer"
+              style="position: static; transform: none; width: auto; height: auto;">&times;</span>
+          </div>
+        </div>
+        <div class="cert-viewer" style="width: 100%; flex: 1; padding: 0; background: #000;">
+          <embed src="" id="resumeFrame" type="application/pdf" width="100%" height="100%"
+            style="border-radius: 0 0 10px 10px;" />
+        </div>
       </div>
     </div>
-  </div>
 
-  <canvas id="mouseParticles"></canvas>
-  <script src="index.js"></script>
+    <canvas id="mouseParticles"></canvas>
+    <script src="index.js"></script>
 </body>
 
 </html>

@@ -126,27 +126,14 @@ const certBtn = document.getElementById('certBtn');
 const certModal = document.getElementById('certModal');
 const closeBtn = document.querySelector('.close-modal');
 
-// Views
-const gridView = document.getElementById('certGridView');
-const detailView = document.getElementById('certDetailView');
-const backBtn = document.getElementById('backToGrid');
-
 // Data
-const selectedCompanyTitle = document.getElementById('selectedCompanyTitle');
-const dynamicCertList = document.getElementById('dynamicCertList');
-const certFrame = document.getElementById('certFrame');
-const placeholderDiv = document.getElementById('placeholderText');
-
-const certData = {
-  "AWS": [{ name: "AWS Academy Graduate", file: "certificates/aws_real.pdf" }],
-  "MongoDB": [{ name: "MongoDB Basics", file: "certificates/mongodb_real.pdf" }],
-  "HackerRank": [{ name: "HackerRank Certificate", file: "certificates/hackerrank_real.pdf" }],
-  "Arduino": [{ name: "Participant Certificate", file: "certificates/arduino_real.pdf" }]
-};
 
 // Open/Close Cert Modal
 if (certBtn) {
-  certBtn.addEventListener('click', (e) => { e.preventDefault(); certModal.classList.add('active'); showGridView(); });
+  certBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    certModal.classList.add('active');
+  });
 }
 if (closeBtn) closeBtn.addEventListener('click', () => { certModal.classList.remove('active'); });
 if (certModal) certModal.addEventListener('click', (e) => { if (e.target === certModal) certModal.classList.remove('active'); });
