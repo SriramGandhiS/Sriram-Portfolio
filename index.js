@@ -251,3 +251,70 @@ function addRunawayBehavior(btnEl) {
 
 const rejectBtn = document.getElementById('rejectBtn');
 addRunawayBehavior(rejectBtn);
+
+// =======================
+// About Section: Stat Counters + Skill Bars + Parallax Blobs
+// =======================
+(function () {
+  // --- Stat counter ---
+  function startCounters() {
+    document.querySelectorAll('.stat-num, .lc-total-num, .lc-meta-val[data-target]').forEach(el => {
+      const target = parseInt(el.getAttribute('data-target'));
+      if (isNaN(target)) return;
+      const duration = 1400;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.floor(current);
+      }, 16);
+    });
+  }
+
+  // --- Skill bars ---
+  function startSkillBars() {
+    document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+      bar.style.width = bar.getAttribute('data-width') + '%';
+    });
+  }
+
+  // Trigger once on scroll into view
+  let triggered = false;
+  const aboutSection = document.getElementById('about');
+  if (aboutSection) {
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !triggered) {
+        triggered = true;
+        startCounters();
+        startSkillBars();
+        obs.disconnect();
+      }
+    }, { threshold: 0.25 });
+    obs.observe(aboutSection);
+  }
+
+  // --- Parallax blobs on scroll ---
+  const blob1 = document.querySelector('.blob-1');
+  const blob2 = document.querySelector('.blob-2');
+  window.addEventListener('scroll', () => {
+    if (!aboutSection || !blob1 || !blob2) return;
+    const rect = aboutSection.getBoundingClientRect();
+    const rel = -rect.top;
+    blob1.style.transform = `translateY(${rel * 0.18}px)`;
+    blob2.style.transform = `translateY(${rel * -0.12}px)`;
+  }, { passive: true });
+})();
+
+// =======================
+// JS Mastery Project Cards: Mouse Spotlight Effect
+// =======================
+document.querySelectorAll('.jsm-project-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  });
+});

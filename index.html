@@ -8,131 +8,397 @@
   <link rel="stylesheet" href="index.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 </head>
 
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar">
-    <ul>
-      <li><a href="#home" class="nav-item">Home</a></li>
-      <li><a href="#projects" class="nav-item">Projects</a></li>
-      <li><a href="#about" class="nav-item">About</a></li>
-      <li><a href="#contact" class="nav-item">Contact</a></li>
+    <!-- Left: Brand -->
+    <div class="nav-brand">
+      <div class="nav-logo">S</div>
+      <span class="nav-name">Sriram S</span>
+      <span class="nav-dot">dev.</span>
+    </div>
+
+    <!-- Right: Links -->
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="academic/index.html" class="nav-academic" target="_blank">Academic</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <header class="hero" id="home">
-    <div class="cube"></div>
-    <h1 class="hero-name">Sriram <span class="green-symbol">&lt;/&gt;</span></h1>
-    <p class="tagline">Front-End & Back-End Developer | UI/UX Learner</p>
+    <div class="hero-container">
+      <!-- Left decorative accent line -->
+      <div class="hero-accent">
+        <div class="hero-accent-dot"></div>
+        <div class="hero-accent-line"></div>
+      </div>
 
-    <div class="cta-group">
-      <a href="#" class="resume-btn" id="resumeTriggerBtn">Resume</a>
-      <a href="#" class="resume-btn" id="certBtn">Certifications</a>
+      <!-- Main Text Content -->
+      <div class="hero-content">
+        <h1 class="hero-name">Hi, I'm <span class="hero-name-gradient">Sriram</span></h1>
+        <p class="tagline"><span style="color: var(--primary-glow); font-weight: 800;">&lt;/&gt;</span> Front-End &amp;
+          Back-End Developer</p>
+
+        <div class="cta-group">
+          <a href="#" class="resume-btn" id="resumeTriggerBtn">Resume</a>
+          <a href="#" class="resume-btn" id="certBtn">Certifications</a>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="hero-contact-icons">
+          <a href="https://github.com/Sriram-S25" target="_blank">
+            <img src="images/github.png" alt="GitHub">
+          </a>
+          <a href="https://www.linkedin.com/in/sriram73/" target="_blank">
+            <img src="images/linked.png" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
     </div>
 
-    <!-- Social Icons -->
-    <div class="hero-contact-icons">
-      <a href="https://github.com/SriramGandhiS" target="_blank">
-        <img src="images/github.png" alt="GitHub">
-      </a>
-      <a href="https://www.linkedin.com/in/sriram-s-432a99296" target="_blank">
-        <img src="images/linked.png" alt="LinkedIn">
-      </a>
-      <a href="mailto:iamramm8@gmail.com">
-        <img src="images/mail.png" alt="Email">
-      </a>
+    <!-- 3D Computer Desktop Decoration (Downloaded Model) -->
+    <div class="hero-3d-model">
+      <model-viewer src="images/gaming_model.glb" camera-controls auto-rotate auto-rotate-delay="0"
+        rotation-per-second="10deg" disable-zoom shadow-intensity="1" exposure="1.2" environment-image="neutral"
+        min-camera-orbit="auto 90deg auto" max-camera-orbit="auto 90deg auto" bounds="tight"
+        alt="A 3D model of a gaming computer">
+
+        <!-- Pinned Watermark -->
+        <div slot="hotspot-watermark" data-position="0 0.1 0.4" class="table-watermark">
+          sriram.dev
+        </div>
+      </model-viewer>
     </div>
   </header>
 
   <!-- ABOUT -->
-  <section id="about">
-    <h2>About Me</h2>
-    <div class="about-wrapper">
-      <div class="about-text">
-        <p>
-          Hi, I’m Sriram 👋. Currently pursuing Computer Science Engineering at PSNACET.
-          I’m passionate about learning UI/UX design, Front-End, and Back-End development.
-          Over the last 100+ days, I’ve built multiple projects using Java, Python, Django, and modern web tech.
-        </p>
+  <section id="about" class="about-section">
 
-        <!-- Skills -->
-        <div class="skills-container">
-          <div class="skill-card">
-            <div class="skill-front">Python</div>
-            <div class="skill-back">Intermediate</div>
+    <div class="about-blob blob-1"></div>
+    <div class="about-blob blob-2"></div>
+
+    <div class="about-inner">
+
+      <!-- COL 1: Photo -->
+      <div class="about-photo-wrap" id="aboutPhotoWrap">
+        <div class="photo-depth-layer layer-3"></div>
+        <div class="photo-depth-layer layer-2"></div>
+        <div class="photo-glow-ring"></div>
+        <img src="images/me.jpg" alt="Sriram Gandhi" class="about-main-photo">
+        <div class="photo-tag">
+          <span class="photo-tag-dot"></span>
+          Available for work
+        </div>
+      </div>
+
+      <!-- RIGHT: Content -->
+      <div class="about-content" id="aboutContent">
+
+        <p class="about-eyebrow">— WHO AM I</p>
+        <h2 class="about-heading">Sriram <span class="about-heading-accent">S</span></h2>
+        <p class="about-sub">3rd Year CSE &middot; 6th Semester &middot; PSNACET, Madurai</p>
+        <p class="about-desc">
+          I build things that work. Over 100+ days of consistent development &mdash;
+          Java backends, Python automation, and modern web frontends.
+          3rd year, 6th semester, graduating 2027 &mdash; open to internships and full-time roles.
+        </p><!-- Stats Row -->
+        <div class="about-stats">
+          <div class="stat-item">
+            <span class="stat-num" data-target="100">0</span><span class="stat-plus">+</span>
+            <p>Days Building</p>
           </div>
-          <div class="skill-card">
-            <div class="skill-front">Java</div>
-            <div class="skill-back">Intermediate</div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="5">0</span><span class="stat-plus">+</span>
+            <p>Projects</p>
           </div>
-          <div class="skill-card">
-            <div class="skill-front">HTML</div>
-            <div class="skill-back">Advanced</div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="30">0</span><span class="stat-plus">+</span>
+            <p>Certifications</p>
           </div>
-          <div class="skill-card">
-            <div class="skill-front">CSS</div>
-            <div class="skill-back">Advanced</div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="126">0</span><span class="stat-plus"></span>
+            <p>LeetCode Solved</p>
+          </div>
+        </div>
+
+        <!-- Badges -->
+        <div class="badge-row">
+          <span class="cert-badge hackerrank-badge">🏆 HackerRank Certified Programmer</span>
+          <span class="cert-badge leetcode-badge">⚡ LeetCode · Beats 85.1%</span>
+        </div>
+
+        <!-- Skill Bars -->
+        <div class="skill-bars">
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Java</span><span>75%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="75"></div>
+            </div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Python</span><span>70%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="70"></div>
+            </div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>HTML / CSS</span><span>90%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="90"></div>
+            </div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Django</span><span>65%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="65"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="about-timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-body">
+              <span class="tl-year">Nov 2023</span>
+              <p class="tl-text">Joined PSNACET &mdash; Started B.E. CSE, first line of code written</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-body">
+              <span class="tl-year">2024 &ndash; 2025</span>
+              <p class="tl-text">5+ projects shipped &middot; AWS, MongoDB, HackerRank certifications &middot; Now 6th
+                Semester</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot active"></div>
+            <div class="tl-body">
+              <span class="tl-year">2027 &rarr;</span>
+              <p class="tl-text">Graduating B.E. CSE &middot; 126 LeetCode solved &middot; Open for placements &amp;
+                internships</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- COL 3: Cert Collage + LeetCode -->
+        <div class="about-right-col">
+
+          <!-- Fanned Cert Collage -->
+          <div class="cert-collage-wrap">
+            <p class="collage-label">HackerRank &middot; 7 Certificates</p>
+            <div class="cert-fan" id="certFan">
+              <div class="cert-card cf1"><img src="images/cert1.png" alt="Python (Basic)"></div>
+              <div class="cert-card cf2"><img src="images/cert2.png" alt="Java (Basic)"></div>
+              <div class="cert-card cf3"><img src="images/cert3.png" alt="SQL (Basic)"></div>
+              <div class="cert-card cf4"><img src="images/cert4.png" alt="Problem Solving"></div>
+              <div class="cert-card cf5"><img src="images/cert1.png" alt="Certificate 5"></div>
+              <div class="cert-card cf6"><img src="images/cert2.png" alt="Certificate 6"></div>
+              <div class="cert-card cf7"><img src="images/cert3.png" alt="Certificate 7"></div>
+            </div>
+            <p class="collage-sub">Python &middot; Java &middot; SQL &middot; Problem Solving &middot; CSS &middot; JS
+              &middot; Node.js</p>
+          </div>
+
+          <!-- LeetCode Panel -->
+          <div class="lc-panel">
+            <div class="lc-panel-header">
+              <span class="lc-panel-brand">LeetCode</span>
+              <span class="lc-panel-beats">Beats 85.1%</span>
+            </div>
+            <div class="lc-total">
+              <span class="lc-total-num" data-target="126">0</span>
+              <span class="lc-total-label">Problems Solved</span>
+            </div>
+            <div class="lc-difficulty-row">
+              <div class="lc-diff easy"><span>Easy</span><b>51</b></div>
+              <div class="lc-diff med"><span>Medium</span><b>53</b></div>
+              <div class="lc-diff hard"><span>Hard</span><b>22</b></div>
+            </div>
+            <div class="lc-meta-row">
+              <div class="lc-meta-item">
+                <span class="lc-meta-val" data-target="247">0</span>
+                <span class="lc-meta-label">Submissions</span>
+              </div>
+              <div class="lc-meta-item">
+                <span class="lc-meta-val lc-pct">62.8%</span>
+                <span class="lc-meta-label">Acceptance</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+  </section>
+
+
+
+
+
+  <!-- PROJECTS -->
+  <section id="projects" class="jsm-section">
+    <p class="jsm-section-subtext">MY WORK</p>
+    <h2 class="jsm-section-headtext">Projects.</h2>
+    <p class="jsm-section-desc">
+      Following projects showcases my skills and experience through real-world examples of my work. Each project is
+      briefly described with links to code repositories and live demos in it. It reflects my ability to solve complex
+      problems, work with different technologies, and manage projects effectively.
+    </p>
+
+    <div class="jsm-projects-grid">
+
+      <!-- Project 1: Portfolio -->
+      <div class="jsm-project-card">
+        <div class="card-glare"></div>
+        <div class="jsm-card-image-box scroll-box">
+          <!-- Real screenshot taken by subagent -->
+          <img src="images/proj-portfolio.png" alt="Portfolio Live Preview" class="jsm-card-img scroll-anim">
+          <div class="jsm-card-img-overlay">
+            <div class="jsm-github-icon" onclick="window.open('https://github.com/Sriram-S25', '_blank')">
+              <img src="images/github.png" alt="github">
+            </div>
+            <div class="jsm-github-icon jsm-live-icon"
+              onclick="window.open('https://sriram-portfolio-95n2.onrender.com', '_blank')">
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+        <div class="jsm-card-content">
+          <h3>Portfolio Website</h3>
+          <p>Personal portfolio website built with modern web technologies, featuring highly interactive 3D designs and
+            premium user interfaces.</p>
+          <div class="jsm-card-tags">
+            <p class="jsm-tag blue-text-gradient">#html</p>
+            <p class="jsm-tag green-text-gradient">#css</p>
+            <p class="jsm-tag pink-text-gradient">#js</p>
           </div>
         </div>
       </div>
-      <img src="images/me.jpg" alt="Sriram" class="about-photo">
-    </div>
-  </section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-      <!-- Project 1 -->
-      <div class="project-card">
-        <h3>Portfolio Website</h3>
-        <p>Personal Portfolio</p>
-        <a href="https://sriram-portfolio-95n2.onrender.com" target="_blank" class="glow-link">View Live Project</a>
+      <!-- Project 2: Smart Bus Tracking -->
+      <div class="jsm-project-card">
+        <div class="card-glare"></div>
+        <div class="jsm-card-image-box scroll-box">
+          <img src="images/proj-bus.png" alt="Bus Tracking Live Preview" class="jsm-card-img scroll-anim">
+          <div class="jsm-card-img-overlay">
+            <div class="jsm-github-icon" onclick="window.open('https://github.com/Sriram-S25', '_blank')">
+              <img src="images/github.png" alt="github">
+            </div>
+          </div>
+        </div>
+        <div class="jsm-card-content">
+          <h3>Smart Bus Tracking <span class="status-badge" style="font-size: 0.6rem; margin-bottom:0">Under
+              Process</span></h3>
+          <p>Android Application designed to track buses in real-time, providing estimated arrival times and route
+            management.</p>
+          <div class="jsm-card-tags">
+            <p class="jsm-tag blue-text-gradient">#java</p>
+            <p class="jsm-tag green-text-gradient">#android</p>
+            <p class="jsm-tag pink-text-gradient">#firebase</p>
+          </div>
+        </div>
       </div>
 
-      <!-- Project 2 -->
-      <div class="project-card under-process">
-        <h3>Smart Bus Tracking</h3>
-        <span class="status-badge">Under Process</span>
-        <p>Android Application (Java/Firebase)</p>
+      <!-- Project 3: Smart Attendance -->
+      <div class="jsm-project-card">
+        <div class="card-glare"></div>
+        <div class="jsm-card-image-box scroll-box">
+          <img src="images/proj-attendance.png" alt="Attendance Project" class="jsm-card-img scroll-anim">
+          <div class="jsm-card-img-overlay">
+            <div class="jsm-github-icon" onclick="window.open('https://minipro-vatx.onrender.com/', '_blank')">
+              <span>↗</span>
+            </div>
+          </div>
+        </div>
+        <div class="jsm-card-content">
+          <h3>Smart Attendance System</h3>
+          <p>AI-powered face recognition attendance system tailored exclusively for educational institutions and
+            corporate tracking.</p>
+          <div class="jsm-card-tags">
+            <p class="jsm-tag blue-text-gradient">#python</p>
+            <p class="jsm-tag green-text-gradient">#django</p>
+            <p class="jsm-tag pink-text-gradient">#opencv</p>
+          </div>
+        </div>
       </div>
+
+      <!-- Project 4: Hiresense -->
+      <div class="jsm-project-card">
+        <div class="card-glare"></div>
+        <div class="jsm-card-image-box">
+          <!-- Parallax animated effect for Under Construction -->
+          <div class="parallax-bg parallax-hiresense">
+            <div class="parallax-layer layer-ai-1"></div>
+            <div class="parallax-layer layer-ai-2"></div>
+            <div class="parallax-text">TRAINING AI...</div>
+          </div>
+          <div class="jsm-card-img-overlay">
+            <div class="jsm-github-icon" onclick="window.open('https://github.com/Sriram-S25', '_blank')">
+              <img src="images/github.png" alt="github">
+            </div>
+          </div>
+        </div>
+        <div class="jsm-card-content">
+          <h3>Hiresense <span class="status-badge" style="font-size: 0.6rem; margin-bottom:0">Under Process</span></h3>
+          <p>AI-Powered Recruitment & Applicant Tracking Platform to streamline hiring pipelines and analyze candidate
+            data efficiently.</p>
+          <div class="jsm-card-tags">
+            <p class="jsm-tag blue-text-gradient">#react</p>
+            <p class="jsm-tag green-text-gradient">#ai</p>
+            <p class="jsm-tag pink-text-gradient">#nodejs</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <div class="contact-container">
-      <div class="contact-3d-card">
-        <div class="contact-content-inner">
-          <div class="contact-info">
-            <div class="info-row">
-              <img src="images/mail.png" alt="Email" class="contact-icon-small">
-              <a href="mailto:iamramm8@gmail.com" class="glow-mail">iamramm8@gmail.com</a>
-            </div>
-            <div class="info-row">
-              <span class="label-icon">📱</span>
-              <span>+91 9361123688</span>
-            </div>
-            <div class="info-row">
-              <span class="label-icon">📍</span>
-              <span>Madurai, Tamil Nadu, India</span>
-            </div>
-            <div class="info-row">
-              <span class="label-icon">🎓</span>
-              <span>CSE Student @ PSNACET</span>
-            </div>
-          </div>
+  <section id="contact" class="jsm-section jsm-contact-section">
+    <div class="jsm-contact-grid">
 
-          <div class="contact-actions">
-            <a href="mailto:iamramm8@gmail.com" class="hire-me-btn">Hire Me</a>
-            <button id="rejectBtn" class="reject-btn">Reject</button>
-          </div>
+      <!-- Left: Form Card -->
+      <div class="jsm-form-card">
+        <p class="jsm-section-subtext">GET IN TOUCH</p>
+        <h2 class="jsm-section-headtext">Contact.</h2>
+
+        <form class="jsm-contact-form">
+          <label class="jsm-form-label">
+            <span class="jsm-form-text">Your Name</span>
+            <input type="text" name="name" placeholder="What's your name?" class="jsm-form-input">
+          </label>
+          <label class="jsm-form-label">
+            <span class="jsm-form-text">Your Email</span>
+            <input type="email" name="email" placeholder="What's your email?" class="jsm-form-input">
+          </label>
+          <label class="jsm-form-label">
+            <span class="jsm-form-text">Your Message</span>
+            <textarea rows="7" name="message" placeholder="What do you want to say?" class="jsm-form-input"></textarea>
+          </label>
+
+          <button type="submit" class="jsm-submit-btn">Send</button>
+        </form>
+      </div>
+
+      <!-- Right: 3D Earth / Setup -->
+      <div class="jsm-earth-container">
+        <div class="jsm-css-orb">
+          <div class="orb-core"></div>
+          <div class="orb-ring ring-1"></div>
+          <div class="orb-ring ring-2"></div>
+          <div class="orb-ring ring-3"></div>
         </div>
       </div>
+
     </div>
   </section>
 
