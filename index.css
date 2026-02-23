@@ -1908,38 +1908,125 @@ iframe.show {
   color: rgba(255, 255, 255, 0.35);
 }
 
-/* Mobile */
+/* Mobile Styles */
 @media (max-width: 768px) {
+  .navbar {
+    padding: 0 16px;
+  }
 
+  .nav-brand {
+    gap: 6px;
+  }
+
+  .nav-name {
+    font-size: 0.85rem;
+  }
+
+  .nav-links {
+    gap: 2px;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+    padding: 5px 8px;
+  }
+
+  .nav-academic {
+    padding: 4px 10px !important;
+  }
+
+  .hero {
+    flex-direction: column-reverse;
+    /* Put model top, or column for model bottom */
+    padding: 100px 20px 60px;
+    height: auto;
+    gap: 40px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .hero-container {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .hero-accent {
+    display: none;
+    /* Hide vertical line on mobile */
+  }
+
+  .hero-content {
+    text-align: center;
+  }
 
   .hero-name {
+    font-size: 2.8rem;
+    word-break: break-word;
+  }
+
+  .tagline {
+    font-size: 1.1rem;
+    margin: 15px 0 25px;
+  }
+
+  .cta-group {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero-contact-icons {
+    justify-content: center;
+  }
+
+  .hero-3d-model {
+    position: relative;
+    right: 0;
+    top: 0;
+    transform: none;
+    width: 100%;
+    height: 350px;
+    /* Reduced height for mobile */
+    margin: 0 auto;
+    order: -1;
+    /* Place 3D model above text on mobile */
+  }
+
+  .table-watermark {
+    font-size: 1.2rem;
+  }
+
+  .about-magazine {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .about-photo-col {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .about-photo-tall {
+    height: 300px;
+  }
+
+  .jsm-section-headtext {
     font-size: 2.5rem;
   }
+}
 
-  .about-photo {
-    width: 150px;
-    height: 150px;
+/* Extra small devices */
+@media (max-width: 480px) {
+  .hero-name {
+    font-size: 2.2rem;
   }
 
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .contact-content-inner {
-    flex-direction: column;
-  }
-
-  .contact-actions {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .cert-container {
-    flex-direction: column;
-  }
-
-  .cert-sidebar {
-    width: 100%;
-    height: 200px;
+  .nav-name {
+    display: none;
+    /* Hide name on very small screens to fit links */
   }
 }
