@@ -1908,10 +1908,12 @@ iframe.show {
   color: rgba(255, 255, 255, 0.35);
 }
 
-/* Mobile Styles */
+/* ═══ MOBILE — Full Responsive Fix ═══ */
 @media (max-width: 768px) {
+
+  /* Navbar: compact but fully visible */
   .navbar {
-    padding: 0 16px;
+    padding: 0 12px;
   }
 
   .nav-brand {
@@ -1919,86 +1921,100 @@ iframe.show {
   }
 
   .nav-name {
-    font-size: 0.85rem;
+    display: none;
   }
 
+  /* Hides "Sriram S" so links fit */
   .nav-links {
-    gap: 2px;
+    gap: 0;
   }
 
   .nav-links a {
-    font-size: 0.75rem;
-    padding: 5px 8px;
+    font-size: 0.72rem;
+    padding: 5px 7px;
   }
 
   .nav-academic {
-    padding: 4px 10px !important;
+    font-size: 0.7rem !important;
+    padding: 4px 8px !important;
   }
 
+  /* Hero: stack content vertically, hide the heavy 3D model */
   .hero {
-    flex-direction: column-reverse;
-    /* Put model top, or column for model bottom */
+    flex-direction: column;
     padding: 100px 20px 60px;
     height: auto;
-    gap: 40px;
-    text-align: center;
-    justify-content: center;
+    max-width: 100%;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .hero-container {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
     width: 100%;
-    text-align: center;
-    gap: 15px;
-  }
-
-  .hero-accent {
-    display: none;
-    /* Hide vertical line on mobile */
+    align-items: flex-start;
+    text-align: left;
   }
 
   .hero-content {
-    text-align: center;
+    text-align: left;
   }
 
   .hero-name {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     word-break: break-word;
   }
 
   .tagline {
     font-size: 1.1rem;
-    margin: 15px 0 25px;
+    margin: 12px 0 24px;
   }
 
   .cta-group {
-    justify-content: center;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
   }
 
-  .hero-contact-icons {
-    justify-content: center;
-  }
-
+  /* Hide 3D model on mobile — improves performance + fixes blank void */
   .hero-3d-model {
-    position: relative;
-    right: 0;
-    top: 0;
-    transform: none;
+    display: none;
+  }
+
+  /* Projects: single column, no overflow */
+  .jsm-projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .jsm-project-card {
     width: 100%;
-    height: 350px;
-    /* Reduced height for mobile */
-    margin: 0 auto;
-    order: -1;
-    /* Place 3D model above text on mobile */
+    max-width: 100%;
+    overflow: hidden;
   }
 
-  .table-watermark {
-    font-size: 1.2rem;
+  .jsm-card-content p {
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
+  .jsm-card-tags {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* Contact: stack form and orb */
+  .jsm-contact-grid {
+    flex-direction: column;
+  }
+
+  .jsm-form-card {
+    width: 100%;
+  }
+
+  .jsm-earth-container {
+    width: 100%;
+  }
+
+  /* About: stack columns */
   .about-magazine {
     flex-direction: column;
     gap: 30px;
@@ -2011,22 +2027,64 @@ iframe.show {
   }
 
   .about-photo-tall {
-    height: 300px;
+    height: 280px;
   }
 
+  /* About new inner section */
+  .about-inner {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .about-photo-wrap {
+    margin: 0 auto;
+  }
+
+  /* General section padding */
+  section {
+    padding: 60px 16px;
+  }
+
+  /* JS Mastery headings shrink */
   .jsm-section-headtext {
-    font-size: 2.5rem;
-  }
-}
-
-/* Extra small devices */
-@media (max-width: 480px) {
-  .hero-name {
     font-size: 2.2rem;
   }
 
-  .nav-name {
-    display: none;
-    /* Hide name on very small screens to fit links */
+  .jsm-section-subtext {
+    font-size: 0.75rem;
+  }
+
+  .jsm-section-desc {
+    font-size: 0.9rem;
+  }
+
+  /* Certs and sidebar */
+  .cert-container {
+    flex-direction: column;
+  }
+
+  .cert-sidebar {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+/* Extra small: phones < 400px */
+@media (max-width: 420px) {
+  .hero-name {
+    font-size: 2rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .resume-btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+
+  .jsm-section-headtext {
+    font-size: 1.9rem;
   }
 }
