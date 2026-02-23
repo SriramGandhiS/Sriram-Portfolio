@@ -1656,6 +1656,140 @@ iframe.show {
   transform: rotate(54deg) translateY(-18px);
 }
 
+/* =======================
+   Interactive Parallax Overlay (Modal)
+   ======================= */
+.cert-parallax-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 10, 30, 0.95);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  z-index: 100;
+  display: none;
+  /* hidden by default */
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  overflow: hidden;
+  perspective: 1200px;
+}
+
+.cert-parallax-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.close-parallax-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 101;
+  transition: all 0.3s ease;
+}
+
+.close-parallax-btn:hover {
+  background: var(--primary-glow);
+  box-shadow: 0 0 15px var(--primary-glow);
+  transform: scale(1.1);
+}
+
+.parallax-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.p-cert-card {
+  position: absolute;
+  width: 280px;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+  transform: translateZ(-500px) scale(0);
+  opacity: 0;
+  /* Initial state for pop-in animation */
+}
+
+/* Base glowing effect */
+.p-cert-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 30px rgba(255, 0, 127, 0.1);
+  pointer-events: none;
+  z-index: 2;
+  transition: box-shadow 0.3s ease;
+}
+
+.p-cert-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* The majestic pop-in classes appended via JS */
+.p-cert-card.show-center {
+  transform: translateZ(50px) rotateX(0deg) rotateY(0deg) scale(1);
+  opacity: 1;
+  z-index: 10;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 0, 127, 0.3);
+}
+
+.p-cert-card.show-left {
+  transform: translateX(-160px) translateZ(-50px) rotateY(15deg) scale(0.9);
+  opacity: 0.8;
+  z-index: 5;
+}
+
+.p-cert-card.show-right {
+  transform: translateX(160px) translateZ(-50px) rotateY(-15deg) scale(0.9);
+  opacity: 0.8;
+  z-index: 5;
+}
+
+.p-cert-card.show-far-left {
+  transform: translateX(-300px) translateZ(-150px) rotateY(25deg) scale(0.75);
+  opacity: 0.5;
+  z-index: 3;
+}
+
+.p-cert-card.show-far-right {
+  transform: translateX(300px) translateZ(-150px) rotateY(-25deg) scale(0.75);
+  opacity: 0.5;
+  z-index: 3;
+}
+
+/* High-intensity Hover */
+.p-cert-card:hover {
+  transform: translateZ(120px) scale(1.1) !important;
+  opacity: 1 !important;
+  z-index: 20 !important;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 1), 0 0 50px rgba(255, 0, 127, 0.6) !important;
+}
+
+.p-cert-card:hover::before {
+  box-shadow: inset 0 0 50px rgba(255, 0, 127, 0.4);
+}
+
 /* Auto-cycle active card highlight via animation */
 @keyframes certCycle {
 

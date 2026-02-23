@@ -152,51 +152,65 @@ if (closeBtn) closeBtn.addEventListener('click', () => { certModal.classList.rem
 if (certModal) certModal.addEventListener('click', (e) => { if (e.target === certModal) certModal.classList.remove('active'); });
 
 
-function showGridView() {
-  gridView.style.display = 'flex';
-  detailView.classList.remove('active');
-  setTimeout(() => { detailView.style.display = 'none'; }, 400);
-}
+// =======================
+// NEW Interactive Parallax Certificates
+// =======================
+const certParallaxOverlay = document.getElementById('certParallaxOverlay');
+const parallaxContent = document.getElementById('parallaxContent');
+const closeParallaxBtn = document.getElementById('closeParallaxBtn');
 
-function showDetailView(companyName) {
-  gridView.style.display = 'none';
-  detailView.style.display = 'flex';
-  setTimeout(() => { detailView.classList.add('active'); }, 10);
-
-  selectedCompanyTitle.textContent = companyName;
-  dynamicCertList.innerHTML = '';
-  certFrame.src = "";
-  certFrame.classList.remove('show');
-  placeholderDiv.style.display = 'block';
-
+function openParallaxView(companyName) {
   const certs = certData[companyName] || [];
-  if (certs.length === 0) {
-    dynamicCertList.innerHTML = '<li>No certificates found.</li>';
-  } else {
-    certs.forEach(cert => {
-      const li = document.createElement('li');
-      li.textContent = cert.name;
-      li.onclick = () => {
-        document.querySelectorAll('.cert-list li').forEach(l => l.classList.remove('active'));
-        li.classList.add('active');
-        certFrame.src = cert.file;
-        certFrame.classList.add('show');
-        placeholderDiv.style.display = 'none';
-      };
-      dynamicCertList.appendChild(li);
-    });
-  }
+  if (certs.length === 0) return;
+
+  // Clear previous
+  parallaxContent.innerHTML = '';
+
+  // Show overlay
+  certParallaxOverlay.classList.add('active');
+
+  // We assign specific fan-out classes based on how many certs there are.
+  // Order of pop-in: Center first, then Left/Right, then Far-Left/Far-Right
+  const fanClasses = ['show-center', 'show-left', 'show-right', 'show-far-left', 'show-far-right'];
+
+  certs.forEach((cert, index) => {
+    // Note: To display as an image in Parish, we need an image version of the certificate.
+    // Assuming the user has images or we use a fallback placeholder if it's strictly a PDF.
+    // For this high-intensity UI, img tags (like in the about section fan) look best.
+    const imgPath = cert.file.replace('.pdf', '.png').replace('.jpg', '.png'); // Simple fallback guess
+
+    const card = document.createElement('div');
+    card.className = 'p-cert-card';
+    card.innerHTML = `<img src="${imgPath}" alt="${cert.name}" onerror="this.src='images/cert1.png'">`; // Fallback to cert1.png if image doesn't exist
+
+    parallaxContent.appendChild(card);
+
+    // Staggered pop-in animation
+    setTimeout(() => {
+      // Assign the spread class. If more than 5 certs, they'll loop positions or just stack in center.
+      const spreadClass = fanClasses[index % fanClasses.length];
+      card.classList.add(spreadClass);
+    }, 100 + (index * 150)); // 150ms stagger
+  });
 }
 
-// Back Button
-if (backBtn) backBtn.addEventListener('click', showGridView);
+if (closeParallaxBtn) {
+  closeParallaxBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    certParallaxOverlay.classList.remove('active');
+    // Remove classes to trigger reverse animation before clearing
+    const cards = parallaxContent.querySelectorAll('.p-cert-card');
+    cards.forEach(card => card.className = 'p-cert-card');
+  });
+}
 
-// Company Card Click
+// Company Card Click -> Trigger Parallax directly
 document.querySelectorAll('.company-card').forEach(card => {
   card.addEventListener('click', () => {
-    showDetailView(card.getAttribute('data-company'));
+    openParallaxView(card.getAttribute('data-company'));
   });
 });
+
 
 // Resume Logic
 const resumeBtn = document.getElementById('resumeTriggerBtn');
