@@ -194,18 +194,24 @@ function openParallaxView(companyName) {
   // Show overlay
   certParallaxOverlay.classList.add('active');
 
-  // We assign specific fan-out classes based on how many certs there are.
+  if (typeof pdfjsLib !== 'undefined') {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
   certs.forEach((cert, index) => {
     const card = document.createElement('div');
     card.className = 'p-cert-card p-cert-iframe-card';
     card.style.animationDelay = `${index * 0.1}s`;
+
+    const canvasId = `pdf-canvas-${companyName.replace(/[^a-zA-Z0-9]/g, '')}-${index}`;
+    const fileUrl = cert.file.split('#')[0];
+
     card.innerHTML = `
-      <div class="iframe-glass-cover" style="position: absolute; inset: 0; z-index: 5;"></div>
-      <embed src="${cert.file}#toolbar=0&navpanes=0&scrollbar=0&view=Fit" type="application/pdf" style="width: 100%; height: 100%; border: none; pointer-events: none; display: block; background: #fff;"></embed>
+      <canvas id="${canvasId}" style="width: 100%; height: 100%; object-fit: cover; background: #fff;"></canvas>
       <div class="cert-bento-label">
         <span class="cert-index">${index + 1} / ${certs.length}</span>
         <span class="cert-name">${cert.name}</span>
-        <a href="${cert.file.split('#')[0]}" download class="cert-download-btn" title="Download">
+        <a href="${fileUrl}" download class="cert-download-btn" title="Download">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
             <polyline points="7 10 12 15 17 10"></polyline>
@@ -216,6 +222,32 @@ function openParallaxView(companyName) {
     `;
 
     parallaxContent.appendChild(card);
+
+    // Render PDF to Canvas
+    if (typeof pdfjsLib !== 'undefined') {
+      const pageNum = parseInt(cert.file.split('#page=')[1] || "1");
+
+      pdfjsLib.getDocument(fileUrl).promise.then(pdf => {
+        return pdf.getPage(pageNum);
+      }).then(page => {
+        const canvas = document.getElementById(canvasId);
+        if (!canvas) return; // In case user closed modal before render
+        const context = canvas.getContext('2d');
+
+        // Scale for high DPI display rendering quality
+        const viewport = page.getViewport({ scale: 2.0 });
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        const renderContext = {
+          canvasContext: context,
+          viewport: viewport
+        };
+        page.render(renderContext);
+      }).catch(err => {
+        console.error("Error rendering PDF:", err);
+      });
+    }
   });
 }
 
