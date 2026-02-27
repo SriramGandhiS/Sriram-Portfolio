@@ -152,12 +152,7 @@ const certData = {
     { name: "Problem Solving", file: "certificates/Hacker ranker.pdf#page=4" },
     { name: "CSS (Basic)", file: "certificates/Hacker ranker.pdf#page=5" },
     { name: "JavaScript (Basic)", file: "certificates/Hacker ranker.pdf#page=6" },
-    { name: "Node.js (Basic)", file: "certificates/Hacker ranker.pdf#page=7" },
-    { name: "React (Basic)", file: "certificates/Hacker ranker.pdf#page=8" },
-    { name: "Problem Solving (Intermediate)", file: "certificates/Hacker ranker.pdf#page=9" },
-    { name: "Java (Intermediate)", file: "certificates/Hacker ranker.pdf#page=10" },
-    { name: "SQL (Intermediate)", file: "certificates/Hacker ranker.pdf#page=11" },
-    { name: "Python (Intermediate)", file: "certificates/Hacker ranker.pdf#page=12" }
+    { name: "Node.js (Basic)", file: "certificates/Hacker ranker.pdf#page=7" }
   ],
   "Arduino": [
     { name: "Participant Certificate", file: "certificates/arduino_real.pdf" }
