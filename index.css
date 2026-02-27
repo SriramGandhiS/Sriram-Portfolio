@@ -1738,17 +1738,14 @@ iframe.show {
   position: relative;
   width: 100%;
   max-width: 420px;
-  height: 400px;
+  aspect-ratio: 1.414;
   margin: 0 auto;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
   animation: popInTile 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
   display: flex;
@@ -1787,7 +1784,6 @@ iframe.show {
 /* High-intensity Hover */
 .p-cert-card:hover {
   transform: translateY(-8px) scale(1.02);
-  border-color: rgba(255, 0, 127, 0.5);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 0, 127, 0.4);
   z-index: 20;
 }

@@ -201,7 +201,7 @@ function openParallaxView(companyName) {
     card.style.animationDelay = `${index * 0.1}s`;
     card.innerHTML = `
       <div class="iframe-glass-cover" style="position: absolute; inset: 0; z-index: 5;"></div>
-      <embed src="${cert.file}#toolbar=0&navpanes=0&scrollbar=0&view=Fit" type="application/pdf" style="width: 100%; height: 350px; border: none; pointer-events: none; display: block; background: #fff;"></embed>
+      <embed src="${cert.file}#toolbar=0&navpanes=0&scrollbar=0&view=Fit" type="application/pdf" style="width: 100%; height: 100%; border: none; pointer-events: none; display: block; background: #fff;"></embed>
       <div class="cert-bento-label">
         <span class="cert-index">${index + 1} / ${certs.length}</span>
         <span class="cert-name">${cert.name}</span>
