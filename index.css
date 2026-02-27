@@ -1214,6 +1214,8 @@ iframe.show {
   padding: 100px 60px;
   overflow: visible;
   width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
   box-sizing: border-box;
 }
 
@@ -1245,7 +1247,7 @@ iframe.show {
 
 .about-inner {
   display: flex;
-  gap: 80px;
+  gap: 100px;
   align-items: center;
   position: relative;
   z-index: 2;
@@ -1393,7 +1395,7 @@ iframe.show {
 .about-sub {
   color: rgba(255, 255, 255, 0.4);
   font-size: 0.88rem;
-  margin-bottom: 18px;
+  margin-bottom: 25px;
   letter-spacing: 1px;
 }
 
@@ -1401,8 +1403,8 @@ iframe.show {
   color: rgba(255, 255, 255, 0.65);
   font-size: 0.9rem;
   line-height: 1.8;
-  max-width: 480px;
-  margin-bottom: 28px;
+  max-width: 550px;
+  margin-bottom: 40px;
 }
 
 /* Stats */
@@ -1442,10 +1444,11 @@ iframe.show {
 
 /* Skill Bars */
 .skill-bars {
-  margin-bottom: 28px;
+  margin-top: 15px;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
 }
 
 
@@ -1456,7 +1459,7 @@ iframe.show {
   justify-content: space-between;
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.78rem;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .skill-bar-track {
