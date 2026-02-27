@@ -247,7 +247,7 @@ if (viewResumeCard) {
   viewResumeCard.addEventListener('click', () => {
     resumeModal.classList.remove('active');
     resumeViewerModal.classList.add('active');
-    resumeFrame.src = "Sriram_Resume.pdf";
+    resumeFrame.src = "certificates/Sriram_Resume.pdf";
   });
 }
 
