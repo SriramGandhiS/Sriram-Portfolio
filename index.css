@@ -2117,6 +2117,85 @@ iframe.show {
   color: rgba(255, 255, 255, 0.35);
 }
 
+/* ═══ ORBITAL TECH STACK ═══ */
+.orbit-tech-stack {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  margin: 40px 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+
+.orbit-path-wrapper {
+  position: relative;
+  width: 400px;
+  height: 140px;
+  transform: rotate(-8deg);
+}
+
+.orbit-svg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.orbit-item {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  left: 0;
+  top: 0;
+  margin-left: -22px;
+  margin-top: -22px;
+  background: var(--surface);
+  border: 2px solid var(--pink);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  offset-path: path("M 20 70 A 180 50 0 1 0 380 70 A 180 50 0 1 0 20 70");
+  animation: orbitTrack 20s linear infinite;
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+  z-index: 10;
+}
+
+.orbit-item img {
+  width: 24px;
+  height: 24px;
+  transform: rotate(8deg);
+  /* Counter parent rotation */
+}
+
+.orbit-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.orbit-center span {
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--muted);
+  transform: rotate(8deg);
+}
+
+@keyframes orbitTrack {
+  0% {
+    offset-distance: 0%;
+  }
+
+  100% {
+    offset-distance: 100%;
+  }
+}
+
 /* ═══ MOBILE — Full Responsive Fix ═══ */
 @media (max-width: 768px) {
 
