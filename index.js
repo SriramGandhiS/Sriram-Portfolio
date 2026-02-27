@@ -132,10 +132,32 @@ const certData = {
     { name: "AWS Academy Graduate", file: "certificates/aws_real.pdf" }
   ],
   "MongoDB": [
-    { name: "MongoDB Basics", file: "certificates/mongodb_real.pdf" }
+    { name: "MongoDB Basics", file: "certificates/Mango Db.pdf#page=1" },
+    { name: "MongoDB Aggregation", file: "certificates/Mango Db.pdf#page=2" },
+    { name: "Node.js (Developer Path)", file: "certificates/Mango Db.pdf#page=3" },
+    { name: "Data Modeling", file: "certificates/Mango Db.pdf#page=4" },
+    { name: "Performance & Indexes", file: "certificates/Mango Db.pdf#page=5" },
+    { name: "Atlas Search", file: "certificates/Mango Db.pdf#page=6" },
+    { name: "Security", file: "certificates/Mango Db.pdf#page=7" },
+    { name: "MongoDB DBA", file: "certificates/Mango Db.pdf#page=8" },
+    { name: "MongoDB Architecture", file: "certificates/Mango Db.pdf#page=9" },
+    { name: "MongoDB CRUD", file: "certificates/Mango Db.pdf#page=10" },
+    { name: "MongoDB Transactions", file: "certificates/Mango Db.pdf#page=11" },
+    { name: "MongoDB Scale", file: "certificates/Mango Db.pdf#page=12" }
   ],
   "HackerRank": [
-    { name: "HackerRank Certificate", file: "certificates/hackerrank_real.pdf" }
+    { name: "Python (Basic)", file: "certificates/Hacker ranker.pdf#page=1" },
+    { name: "Java (Basic)", file: "certificates/Hacker ranker.pdf#page=2" },
+    { name: "SQL (Basic)", file: "certificates/Hacker ranker.pdf#page=3" },
+    { name: "Problem Solving", file: "certificates/Hacker ranker.pdf#page=4" },
+    { name: "CSS (Basic)", file: "certificates/Hacker ranker.pdf#page=5" },
+    { name: "JavaScript (Basic)", file: "certificates/Hacker ranker.pdf#page=6" },
+    { name: "Node.js (Basic)", file: "certificates/Hacker ranker.pdf#page=7" },
+    { name: "React (Basic)", file: "certificates/Hacker ranker.pdf#page=8" },
+    { name: "Problem Solving (Intermediate)", file: "certificates/Hacker ranker.pdf#page=9" },
+    { name: "Java (Intermediate)", file: "certificates/Hacker ranker.pdf#page=10" },
+    { name: "SQL (Intermediate)", file: "certificates/Hacker ranker.pdf#page=11" },
+    { name: "Python (Intermediate)", file: "certificates/Hacker ranker.pdf#page=12" }
   ],
   "Arduino": [
     { name: "Participant Certificate", file: "certificates/arduino_real.pdf" }
@@ -173,27 +195,20 @@ function openParallaxView(companyName) {
   certParallaxOverlay.classList.add('active');
 
   // We assign specific fan-out classes based on how many certs there are.
-  // Order of pop-in: Center first, then Left/Right, then Far-Left/Far-Right
-  const fanClasses = ['show-center', 'show-left', 'show-right', 'show-far-left', 'show-far-right'];
-
   certs.forEach((cert, index) => {
-    // Note: To display as an image in Parish, we need an image version of the certificate.
-    // Assuming the user has images or we use a fallback placeholder if it's strictly a PDF.
-    // For this high-intensity UI, img tags (like in the about section fan) look best.
-    const imgPath = cert.file.replace('.pdf', '.png').replace('.jpg', '.png'); // Simple fallback guess
-
     const card = document.createElement('div');
-    card.className = 'p-cert-card';
-    card.innerHTML = `<img src="${imgPath}" alt="${cert.name}" onerror="this.src='images/cert1.png'">`; // Fallback to cert1.png if image doesn't exist
+    card.className = 'p-cert-card p-cert-iframe-card';
+    card.style.animationDelay = `${index * 0.1}s`;
+    card.innerHTML = `
+      <div class="iframe-glass-cover" style="position: absolute; inset: 0; z-index: 5;"></div>
+      <embed src="${cert.file}#toolbar=0&navpanes=0&scrollbar=0&view=Fit" type="application/pdf" style="width: 100%; height: 350px; border: none; pointer-events: none; display: block; background: #fff;"></embed>
+      <div class="cert-bento-label">
+        <span class="cert-index">${index + 1} / ${certs.length}</span>
+        <span class="cert-name">${cert.name}</span>
+      </div>
+    `;
 
     parallaxContent.appendChild(card);
-
-    // Staggered pop-in animation
-    setTimeout(() => {
-      // Assign the spread class. If more than 5 certs, they'll loop positions or just stack in center.
-      const spreadClass = fanClasses[index % fanClasses.length];
-      card.classList.add(spreadClass);
-    }, 100 + (index * 150)); // 150ms stagger
   });
 }
 
@@ -322,6 +337,31 @@ addRunawayBehavior(rejectBtn);
     blob2.style.transform = `translateY(${rel * -0.12}px)`;
   }, { passive: true });
 })();
+
+// =======================
+// Mobile Menu Toggle
+// =======================
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.querySelector('.nav-links');
+const navLinksItems = document.querySelectorAll('.nav-links a');
+
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    // Lock/Unlock body scroll
+    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+  });
+
+  // Close menu when a link is clicked
+  navLinksItems.forEach(item => {
+    item.addEventListener('click', () => {
+      navToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+  });
+}
 
 // =======================
 // JS Mastery Project Cards: Mouse Spotlight Effect

@@ -30,6 +30,13 @@
       <li><a href="#contact">Contact</a></li>
       <li><a href="academic/index.html" class="nav-academic" target="_blank">Academic</a></li>
     </ul>
+
+    <!-- Hamburger icon for mobile -->
+    <div class="nav-toggle" id="navToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -335,20 +342,21 @@
       <div class="jsm-project-card">
         <div class="card-glare"></div>
         <div class="jsm-card-image-box">
-          <!-- Parallax animated effect for Under Construction -->
-          <div class="parallax-bg parallax-hiresense">
-            <div class="parallax-layer layer-ai-1"></div>
-            <div class="parallax-layer layer-ai-2"></div>
-            <div class="parallax-text">TRAINING AI...</div>
-          </div>
+          <video autoplay loop muted playsinline class="jsm-card-video">
+            <source src="images/hiresense-preview.mp4" type="video/mp4">
+          </video>
           <div class="jsm-card-img-overlay">
-            <div class="jsm-github-icon" onclick="window.open('https://github.com/Sriram-S25', '_blank')">
+            <div class="jsm-github-icon" onclick="window.open('https://github.com/Sriram-S25/Hiresense.ai', '_blank')">
               <img src="images/github.png" alt="github">
+            </div>
+            <div class="jsm-github-icon jsm-live-icon"
+              onclick="window.open('https://hiresense-ai.vercel.app', '_blank')">
+              <span>↗</span>
             </div>
           </div>
         </div>
         <div class="jsm-card-content">
-          <h3>Hiresense <span class="status-badge" style="font-size: 0.6rem; margin-bottom:0">Under Process</span></h3>
+          <h3>Hiresense</h3>
           <p>AI-Powered Recruitment & Applicant Tracking Platform to streamline hiring pipelines and analyze candidate
             data efficiently.</p>
           <div class="jsm-card-tags">
@@ -465,56 +473,56 @@
 
       </div>
     </div>
+  </div>
 
-    <!-- RESUME OPTIONS MODAL -->
-    <div class="modal-overlay" id="resumeModal">
-      <div class="resume-modal-content">
-        <span class="close-modal close-resume">&times;</span>
-        <h2>Resume Options</h2>
-        <div class="resume-options-grid">
-          <div class="resume-card" id="viewResumeCard">
+  <!-- RESUME OPTIONS MODAL -->
+  <div class="modal-overlay" id="resumeModal">
+    <div class="resume-modal-content">
+      <span class="close-modal close-resume">&times;</span>
+      <h2>Resume Options</h2>
+      <div class="resume-options-grid">
+        <div class="resume-card" id="viewResumeCard">
+          <div class="card-inner">
+            <div class="card-icon">👁️</div>
+            <h3>View</h3>
+            <p>Read online without downloading</p>
+          </div>
+        </div>
+        <a href="Sriram_Resume.pdf" download class="resume-card-link">
+          <div class="resume-card" id="downloadResumeCard">
             <div class="card-inner">
-              <div class="card-icon">👁️</div>
-              <h3>View</h3>
-              <p>Read online without downloading</p>
+              <div class="card-icon">⬇️</div>
+              <h3>Download</h3>
+              <p>Save to your device</p>
             </div>
           </div>
-          <a href="Sriram_Resume.pdf" download class="resume-card-link">
-            <div class="resume-card" id="downloadResumeCard">
-              <div class="card-inner">
-                <div class="card-icon">⬇️</div>
-                <h3>Download</h3>
-                <p>Save to your device</p>
-              </div>
-            </div>
-          </a>
-        </div>
+        </a>
       </div>
     </div>
+  </div>
 
-    <!-- RESUME VIEWER MODAL -->
-    <div class="modal-overlay" id="resumeViewerModal">
-      <div class="cert-modal"
-        style="height: 90vh; max-width: 1200px; width: 95%; display: flex; flex-direction: column;">
-        <div
-          style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #111; border-bottom: 1px solid #333;">
-          <h3 style="margin: 0; color: #fff;">My Resume</h3>
-          <div style="display: flex; gap: 15px; align-items: center;">
-            <a href="Sriram_Resume.pdf" target="_blank"
-              style="color: #39ff14; text-decoration: none; font-size: 0.9rem;">Open in New Tab ↗</a>
-            <span class="close-modal close-resume-viewer"
-              style="position: static; transform: none; width: auto; height: auto;">&times;</span>
-          </div>
-        </div>
-        <div class="cert-viewer" style="width: 100%; flex: 1; padding: 0; background: #000;">
-          <embed src="" id="resumeFrame" type="application/pdf" width="100%" height="100%"
-            style="border-radius: 0 0 10px 10px;" />
+  <!-- RESUME VIEWER MODAL -->
+  <div class="modal-overlay" id="resumeViewerModal">
+    <div class="cert-modal" style="height: 90vh; max-width: 1200px; width: 95%; display: flex; flex-direction: column;">
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #111; border-bottom: 1px solid #333;">
+        <h3 style="margin: 0; color: #fff;">My Resume</h3>
+        <div style="display: flex; gap: 15px; align-items: center;">
+          <a href="Sriram_Resume.pdf" target="_blank"
+            style="color: #39ff14; text-decoration: none; font-size: 0.9rem;">Open in New Tab ↗</a>
+          <span class="close-modal close-resume-viewer"
+            style="position: static; transform: none; width: auto; height: auto;">&times;</span>
         </div>
       </div>
+      <div class="cert-viewer" style="width: 100%; flex: 1; padding: 0; background: #000;">
+        <embed src="" id="resumeFrame" type="application/pdf" width="100%" height="100%"
+          style="border-radius: 0 0 10px 10px;" />
+      </div>
     </div>
+  </div>
 
-    <canvas id="mouseParticles"></canvas>
-    <script src="index.js"></script>
+  <canvas id="mouseParticles"></canvas>
+  <script src="index.js"></script>
 </body>
 
 </html>
