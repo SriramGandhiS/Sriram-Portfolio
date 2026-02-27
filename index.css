@@ -1741,11 +1741,14 @@ iframe.show {
   height: 400px;
   margin: 0 auto;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   cursor: pointer;
-  background: #fff;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   opacity: 0;
   animation: popInTile 0.5s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
   display: flex;
@@ -1784,6 +1787,7 @@ iframe.show {
 /* High-intensity Hover */
 .p-cert-card:hover {
   transform: translateY(-8px) scale(1.02);
+  border-color: rgba(255, 0, 127, 0.5);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 0, 127, 0.4);
   z-index: 20;
 }
@@ -1838,9 +1842,31 @@ iframe.show {
   text-align: right;
   flex: 1;
   margin-left: 15px;
+  margin-right: 15px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.cert-download-btn {
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.cert-download-btn:hover {
+  color: #ff4da6;
+  background: rgba(255, 0, 127, 0.15);
+  border-color: var(--primary-glow);
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+  transform: translateY(-2px);
 }
 
 /* Auto-cycle active card highlight via animation */
