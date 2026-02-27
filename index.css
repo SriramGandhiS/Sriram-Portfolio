@@ -1252,10 +1252,11 @@ iframe.show {
 }
 
 /* ── Photo side ── */
-/* ── Photo side ── */
 .about-left-col {
-  flex: 0 0 auto;
+  flex: 0 0 320px;
   width: 320px;
+  max-width: 320px;
+  min-width: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1407,7 +1408,8 @@ iframe.show {
 /* Stats */
 .about-stats {
   display: flex;
-  gap: 30px;
+  gap: 15px;
+  justify-content: space-between;
   margin-bottom: 30px;
   flex-wrap: wrap;
 }
@@ -1540,8 +1542,9 @@ iframe.show {
 /* Badge row */
 .badge-row {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  gap: 8px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
   margin-bottom: 18px;
 }
 
