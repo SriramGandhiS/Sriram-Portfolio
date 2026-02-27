@@ -1252,12 +1252,14 @@ iframe.show {
 }
 
 /* ── Photo side ── */
-.about-photo-wrap {
+/* ── Photo side ── */
+.about-left-col {
   flex: 0 0 auto;
   width: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: visible;
 }
 
 .photo-frame {
@@ -1517,11 +1519,14 @@ iframe.show {
 }
 
 /* ── About inner: 3-column ── */
+/* ── About inner: 3-column ── */
 .about-inner {
   display: flex;
   gap: 48px;
   align-items: flex-start;
   flex-wrap: nowrap;
+  overflow: visible;
+  position: relative;
 }
 
 /* Bigger blob, spread fully to the left edge */
