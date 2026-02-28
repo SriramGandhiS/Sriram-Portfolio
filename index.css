@@ -2914,15 +2914,19 @@ iframe.show {
 }
 
 .code-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 90px;
   height: 90px;
-  color: #71C4FF;
-  filter: drop-shadow(0 0 15px rgba(113, 196, 255, 0.7));
-  opacity: 0.25;
-  /* Increased base visibility */
-  stroke-width: 2;
-  transition: all 0.6s ease;
-  animation: flow 4s ease-in-out infinite alternate;
+  stroke: url(#pc-symbol-gradient);
+  /* Use the defined gradient */
+  filter: drop-shadow(0 0 10px rgba(82, 39, 255, 0.4));
+  opacity: 0.3;
+  /* Better base visibility */
+  stroke-width: 1.5;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  animation: flow-dynamic 6s ease-in-out infinite alternate;
   /* Digital Pixel Effect */
   mask-image: radial-gradient(circle, #000 60%, transparent 60%);
   mask-size: 4px 4px;
@@ -2930,20 +2934,21 @@ iframe.show {
   -webkit-mask-size: 4px 4px;
 }
 
-@keyframes flow {
+@keyframes flow-dynamic {
   0% {
-    transform: translateY(-15px);
+    transform: translate(-50%, -50%) translateY(-25px) rotate(-5deg);
   }
 
   100% {
-    transform: translateY(15px);
+    transform: translate(-50%, -50%) translateY(25px) rotate(5deg);
   }
 }
 
 .pc-card:hover .code-icon,
 .pc-card.active .code-icon {
   opacity: 1;
-  filter: drop-shadow(0 0 25px rgba(113, 196, 255, 1)) brightness(1.5);
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 20px rgba(255, 159, 252, 0.8)) brightness(1.2);
   animation-play-state: running;
 }
 
