@@ -2695,9 +2695,9 @@ iframe.show {
   position: relative;
   touch-action: none;
   width: 100%;
-  max-width: 360px;
-  /* fit perfectly into about-photo-wrap */
-  margin: 0 auto;
+  max-width: 300px;
+  /* alignment with about-photo-col */
+  margin: 0;
 }
 
 .pc-behind {
@@ -2719,8 +2719,8 @@ iframe.show {
 }
 
 .pc-card {
-  height: 480px;
-  /* fixed height to constrain the aspect ratio in the grid */
+  height: 420px;
+  /* matches about-photo-tall height */
   display: grid;
   aspect-ratio: 0.718;
   border-radius: var(--card-radius);
