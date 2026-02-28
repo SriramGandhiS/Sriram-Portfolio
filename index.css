@@ -171,7 +171,7 @@ html {
   align-items: flex-start;
   gap: 20px;
   position: relative;
-  z-index: 2;
+  z-index: 20;
 }
 
 /* Left Accent Line */
@@ -209,6 +209,7 @@ html {
   color: #fff;
   line-height: 1.1;
   letter-spacing: -1px;
+  white-space: nowrap;
 }
 
 .hero-name-gradient {
@@ -234,6 +235,8 @@ html {
   gap: 16px;
   margin-bottom: 30px;
   justify-content: flex-start;
+  position: relative;
+  z-index: 30;
 }
 
 .resume-btn {
@@ -259,6 +262,8 @@ html {
   display: flex;
   gap: 20px;
   justify-content: flex-start;
+  position: relative;
+  z-index: 30;
 }
 
 .hero-contact-icons a {
@@ -295,9 +300,10 @@ html {
 /* ═══ 3D Model Viewer ═══ */
 .hero-3d-model {
   position: absolute;
-  right: -20px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: -80px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
   width: 700px;
   height: 600px;
   z-index: 10;
