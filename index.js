@@ -469,8 +469,8 @@ document.querySelectorAll('.jsm-project-card').forEach(card => {
     wrapper.style.setProperty('--pointer-from-center', `${clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`);
     wrapper.style.setProperty('--pointer-from-top', `${percentY / 100}`);
     wrapper.style.setProperty('--pointer-from-left', `${percentX / 100}`);
-    wrapper.style.setProperty('--rotate-x', `${round(-(centerX / 5))}deg`);
-    wrapper.style.setProperty('--rotate-y', `${round(centerY / 4)}deg`);
+    wrapper.style.setProperty('--rotate-x', `${round(-(centerX / 10))}deg`);
+    wrapper.style.setProperty('--rotate-y', `${round(centerY / 8)}deg`);
   };
 
   const step = ts => {

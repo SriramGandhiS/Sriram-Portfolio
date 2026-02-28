@@ -2728,7 +2728,7 @@ iframe.show {
   background-blend-mode: color-dodge, normal, normal, normal;
   animation: glow-bg 12s linear infinite;
   box-shadow: rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px) calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px;
-  transition: transform 1s ease;
+  transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
   transform: translateZ(0) rotateX(0deg) rotateY(0deg);
   background: rgba(0, 0, 0, 0.9);
   backface-visibility: hidden;
@@ -2738,7 +2738,7 @@ iframe.show {
 .pc-card:hover,
 .pc-card.active {
   transition: none;
-  transform: translateZ(0) rotateX(var(--rotate-y)) rotateY(var(--rotate-x));
+  transform: translateZ(10px) rotateX(calc(var(--rotate-y) * 0.5)) rotateY(calc(var(--rotate-x) * 0.5));
 }
 
 .pc-card-shell.entering .pc-card {
@@ -2911,6 +2911,45 @@ iframe.show {
   backface-visibility: hidden;
   will-change: transform;
   transition: transform 120ms ease-out;
+}
+
+/* Moving Code Symbols */
+.pc-code-icons {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15%;
+  mix-blend-mode: color-dodge;
+}
+
+.code-icon {
+  width: 40px;
+  height: 40px;
+  color: rgba(113, 196, 255, 0.4);
+  filter: drop-shadow(0 0 8px rgba(113, 196, 255, 0.6));
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.1s ease-out;
+}
+
+.pc-card:hover .code-icon,
+.pc-card.active .code-icon {
+  opacity: 0.8;
+}
+
+.icon-left {
+  transform: translate3d(calc((var(--pointer-from-left) - 0.5) * -20px - 10px),
+      calc((var(--pointer-from-top) - 0.5) * -20px),
+      20px);
+}
+
+.icon-right {
+  transform: translate3d(calc((var(--pointer-from-left) - 0.5) * -20px + 10px),
+      calc((var(--pointer-from-top) - 0.5) * -20px),
+      20px);
 }
 
 .pc-avatar-content::before {
