@@ -2730,7 +2730,7 @@ iframe.show {
   box-shadow: rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px) calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px;
   transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
   transform: translateZ(0) rotateX(0deg) rotateY(0deg);
-  background: url('images/cardimage.jpeg') center/cover no-repeat;
+  background: url('images/cardimage.jpeg') center 20% / cover no-repeat;
   background-color: transparent;
   backface-visibility: hidden;
   overflow: hidden;
@@ -2918,14 +2918,19 @@ iframe.show {
 }
 
 .code-icon {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   color: #fff;
-  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 1));
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
   opacity: 0;
-  stroke-width: 4;
+  stroke-width: 2.5;
   transition: opacity 0.4s ease, transform 0.1s ease-out;
-  animation: flow 2s ease-in-out infinite alternate;
+  animation: flow 3s ease-in-out infinite alternate;
+  /* Pixelated/Grainy Effect */
+  mask-image: radial-gradient(circle, #000 15%, transparent 15%);
+  mask-size: 3px 3px;
+  -webkit-mask-image: radial-gradient(circle, #000 15%, transparent 15%);
+  -webkit-mask-size: 3px 3px;
 }
 
 @keyframes flow {
@@ -2945,15 +2950,27 @@ iframe.show {
 }
 
 .icon-left {
-  transform: translate3d(calc((var(--pointer-from-left) - 0.5) * -30px - 15px),
-      calc((var(--pointer-from-top) - 0.5) * -30px),
-      40px);
+  transform: translate3d(-30%, 0, 40px);
 }
 
 .icon-right {
-  transform: translate3d(calc((var(--pointer-from-left) - 0.5) * -30px + 15px),
-      calc((var(--pointer-from-top) - 0.5) * -30px),
-      40px);
+  transform: translate3d(30%, 0, 40px);
+}
+
+.icon-tl {
+  transform: translate3d(-35%, -60%, 20px) scale(0.8);
+}
+
+.icon-tr {
+  transform: translate3d(35%, -60%, 20px) scale(0.8);
+}
+
+.icon-bl {
+  transform: translate3d(-35%, 60%, 20px) scale(0.8);
+}
+
+.icon-br {
+  transform: translate3d(35%, 60%, 20px) scale(0.8);
 }
 
 .pc-avatar-content::before {
@@ -3061,16 +3078,17 @@ iframe.show {
 .pc-details {
   width: 100%;
   position: absolute;
-  bottom: 2em;
+  bottom: 60px;
   display: flex;
   flex-direction: column;
+  gap: 4px;
 }
 
 .pc-details h3 {
-  font-weight: 600;
+  font-weight: 700;
   margin: 0;
-  font-size: min(4svh, 2.5em);
-  letter-spacing: 0.2em;
+  font-size: 1.8rem;
+  letter-spacing: 0.5em;
   text-transform: uppercase;
   background-image: linear-gradient(to right, #5227FF, #FF9FFC, #B19EEF, #5227FF);
   background-size: 300% 100%;
@@ -3078,21 +3096,21 @@ iframe.show {
   background-clip: text;
   -webkit-background-clip: text;
   animation: gradient-sweep 8s linear infinite;
+  text-indent: 0.5em;
+  /* Centers text better with letter-spacing */
 }
 
 .pc-details p {
-  font-weight: 600;
+  font-weight: 500;
   position: relative;
   white-space: nowrap;
-  font-size: 16px;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
   margin: 0 auto;
   width: min-content;
-  background-image: linear-gradient(to right, #5227FF, #FF9FFC, #B19EEF, #5227FF);
-  background-size: 300% 100%;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  animation: gradient-sweep 8s linear infinite;
+  color: rgba(255, 255, 255, 0.6);
+  opacity: 0.8;
 }
 
 @keyframes gradient-sweep {
