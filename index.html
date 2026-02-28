@@ -96,44 +96,14 @@
 
       <!-- COL 1: Photo -->
       <div class="about-photo-wrap" id="aboutPhotoWrap">
-        <div class="photo-frame" style="padding: 0;">
-          <!-- PROFILE CARD -->
-          <div class="pc-card-wrapper" id="profileCardWrapper">
-            <div class="pc-behind"></div>
-            <div class="pc-card-shell" id="profileCardShell">
-              <div class="pc-card">
-                <div class="pc-inside">
-                  <div class="pc-shine"></div>
-                  <div class="pc-glare"></div>
-                  <div class="pc-content pc-avatar-content">
-                    <img class="avatar" src="images/cardimage.jpeg" alt="Sriram S avatar" loading="lazy"
-                      onerror="this.style.display='none'" />
-                    <div class="pc-user-info">
-                      <div class="pc-user-details">
-                        <div class="pc-mini-avatar">
-                          <img src="images/cardimage.jpeg" alt="Sriram S mini avatar" loading="lazy"
-                            onerror="this.style.opacity='0.5'; this.src='images/cardimage.jpeg'" />
-                        </div>
-                        <div class="pc-user-text">
-                          <div class="pc-handle">@SriramGandhiS</div>
-                          <div class="pc-status">Available for work</div>
-                        </div>
-                      </div>
-                      <button class="pc-contact-btn" id="profileContactBtn" style="pointer-events: auto;" type="button"
-                        aria-label="Contact Sriram S">
-                        Contact Me
-                      </button>
-                    </div>
-                  </div>
-                  <div class="pc-content">
-                    <div class="pc-details">
-                      <h3>Sriram S</h3>
-                      <p>Software Engineer</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="photo-frame">
+          <div class="photo-depth-layer layer-3"></div>
+          <div class="photo-depth-layer layer-2"></div>
+          <div class="photo-glow-ring"></div>
+          <img src="images/me.jpg" alt="Sriram Gandhi" class="about-main-photo">
+          <div class="photo-tag">
+            <span class="photo-tag-dot"></span>
+            Available for work
           </div>
         </div>
 
@@ -464,8 +434,48 @@
       </div>
 
       <!-- Right: 3D Earth / Setup -->
-      <div class="jsm-earth-container">
-        <div class="jsm-css-orb">
+      <div class="jsm-earth-container" style="flex-direction: column; gap: 40px;">
+        <!-- PROFILE CARD -->
+        <div class="pc-card-wrapper" id="profileCardWrapper">
+          <div class="pc-behind"></div>
+          <div class="pc-card-shell" id="profileCardShell">
+            <div class="pc-card">
+              <div class="pc-inside">
+                <div class="pc-shine"></div>
+                <div class="pc-glare"></div>
+                <div class="pc-content pc-avatar-content">
+                  <img class="avatar" src="images/cardimage.jpeg" alt="Sriram S avatar" loading="lazy"
+                    onerror="this.style.display='none'" />
+                  <div class="pc-user-info">
+                    <div class="pc-user-details">
+                      <div class="pc-mini-avatar">
+                        <img src="images/cardimage.jpeg" alt="Sriram S mini avatar" loading="lazy"
+                          onerror="this.style.opacity='0.5'; this.src='images/cardimage.jpeg'" />
+                      </div>
+                      <div class="pc-user-text">
+                        <div class="pc-handle">@SriramGandhiS</div>
+                        <div class="pc-status">Available for work</div>
+                      </div>
+                    </div>
+                    <button class="pc-contact-btn" id="profileContactBtn" style="pointer-events: auto;" type="button"
+                      aria-label="Contact Sriram S">
+                      Contact Me
+                    </button>
+                  </div>
+                </div>
+                <div class="pc-content">
+                  <div class="pc-details">
+                    <h3>Sriram S</h3>
+                    <p>Software Engineer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Background Orb -->
+        <div class="jsm-css-orb" style="transform: scale(0.8); opacity: 0.5;">
           <div class="orb-core"></div>
           <div class="orb-ring ring-1"></div>
           <div class="orb-ring ring-2"></div>
