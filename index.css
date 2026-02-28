@@ -2472,26 +2472,7 @@ iframe.show {
 
 
 
-.logoloop-container::before,
-.logoloop-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: clamp(50px, 15%, 200px);
-  pointer-events: none;
-  z-index: 10;
-}
 
-.logoloop-container::before {
-  left: 0;
-  background: linear-gradient(to right, #050816 0%, rgba(5, 8, 22, 0) 100%);
-}
-
-.logoloop-container::after {
-  right: 0;
-  background: linear-gradient(to left, #050816 0%, rgba(5, 8, 22, 0) 100%);
-}
 
 @keyframes logoScroll {
   0% {
