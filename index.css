@@ -2730,7 +2730,8 @@ iframe.show {
   box-shadow: rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px) calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px;
   transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
   transform: translateZ(0) rotateX(0deg) rotateY(0deg);
-  background: #080808;
+  background: url('images/cardimage.jpeg') center/cover no-repeat;
+  background-color: transparent;
   backface-visibility: hidden;
   overflow: hidden;
 }
@@ -2760,7 +2761,7 @@ iframe.show {
 .pc-inside {
   inset: 0;
   position: absolute;
-  background-image: var(--inner-gradient);
+  background: transparent;
   background-color: transparent;
   transform: none;
 }
@@ -2895,25 +2896,13 @@ iframe.show {
 }
 
 .pc-avatar-content {
-  mix-blend-mode: luminosity;
   overflow: visible;
   transform: translateZ(2);
   backface-visibility: hidden;
 }
 
 .pc-avatar-content .avatar {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  position: absolute;
-  left: 50%;
-  transform-origin: 50% 100%;
-  transform: translateX(calc(-50% + (var(--pointer-from-left) - 0.5) * 6px)) translateZ(0) scaleY(calc(1 + (var(--pointer-from-top) - 0.5) * 0.02)) scaleX(calc(1 + (var(--pointer-from-left) - 0.5) * 0.01));
-  bottom: -1px;
-  backface-visibility: hidden;
-  will-change: transform;
-  transition: transform 120ms ease-out;
+  display: none;
 }
 
 /* Moving Code Symbols */
@@ -2929,12 +2918,12 @@ iframe.show {
 }
 
 .code-icon {
-  width: 65px;
-  height: 65px;
+  width: 80px;
+  height: 80px;
   color: #fff;
-  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 1));
   opacity: 0;
-  stroke-width: 2.5;
+  stroke-width: 4;
   transition: opacity 0.4s ease, transform 0.1s ease-out;
   animation: flow 2s ease-in-out infinite alternate;
 }
@@ -3067,7 +3056,6 @@ iframe.show {
       calc(var(--pointer-from-top) * -6px + 3px),
       0.1px);
   z-index: 5;
-  mix-blend-mode: luminosity;
 }
 
 .pc-details {
