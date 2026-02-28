@@ -80,6 +80,11 @@ html {
 }
 
 /* Links — right */
+/* Desktop: hide hamburger toggle */
+.nav-toggle {
+  display: none;
+}
+
 .nav-links {
   display: flex;
   gap: 4px;
@@ -2378,6 +2383,118 @@ iframe.show {
     font-size: 2.8rem;
     text-align: center;
   }
+
+  /* === About section: stack vertically on mobile === */
+  .about-section>.about-inner,
+  .about-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 0 10px;
+  }
+
+  .about-photo-wrap {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .about-content {
+    width: 100%;
+    text-align: center;
+  }
+
+  .about-stats {
+    justify-content: center;
+  }
+
+  .badge-row {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .skill-bars {
+    text-align: left;
+  }
+
+  .about-timeline {
+    text-align: left;
+  }
+
+  /* About right col (cert fan + LC panel) */
+  .about-right-col {
+    width: 100%;
+  }
+
+  /* Hide the cert fan collage on mobile — too cramped */
+  .cert-collage-wrap {
+    display: none;
+  }
+
+  /* === Projects section: safe min-width === */
+  .jsm-section {
+    padding: 80px 5%;
+  }
+
+  .jsm-projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  /* === Contact section: orb scaled down === */
+  .jsm-css-orb {
+    width: 180px;
+    height: 180px;
+  }
+
+  .orb-core {
+    width: 110px;
+    height: 110px;
+  }
+
+  .ring-1 {
+    width: 150px;
+    height: 150px;
+  }
+
+  .ring-2 {
+    width: 170px;
+    height: 170px;
+  }
+
+  .ring-3 {
+    width: 190px;
+    height: 190px;
+  }
+
+  /* === Modals: safe padding on mobile === */
+  .cert-modal {
+    width: 95%;
+    height: 90vh;
+    border-radius: 12px;
+  }
+
+  .cert-grid-view {
+    padding: 20px 15px;
+  }
+
+  .company-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+  }
+
+  .resume-modal-content {
+    width: 95%;
+    padding: 24px 16px;
+    border-radius: 12px;
+  }
+
+  .parallax-content {
+    padding: 20px 10px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
 }
 
 /* Extra small fixes */
@@ -2396,6 +2513,19 @@ iframe.show {
 
   .jsm-section-headtext {
     font-size: 2.4rem;
+  }
+
+  /* Orbit tech stack: scale down to prevent overflow */
+  .orbit-path-wrapper {
+    transform: scale(0.72) rotate(-8deg);
+    transform-origin: center center;
+    width: 400px;
+    /* keep original, scale handles sizing */
+  }
+
+  .orbit-tech-stack {
+    overflow: hidden;
+    height: 140px;
   }
 }
 
@@ -2419,8 +2549,11 @@ iframe.show {
   animation: logoScroll var(--logoloop-duration) linear infinite;
 }
 
-.logoloop-track:hover {
-  animation-play-state: paused;
+/* Only pause on hover for pointer (non-touch) devices */
+@media (hover: hover) and (pointer: fine) {
+  .logoloop-track:hover {
+    animation-play-state: paused;
+  }
 }
 
 .logoloop-list {
@@ -2493,5 +2626,33 @@ iframe.show {
 
   .logoloop-text {
     font-size: 0.95rem;
+  }
+}
+
+/* ═══ ACCESSIBILITY: Reduced Motion ═══ */
+@media (prefers-reduced-motion: reduce) {
+  .logoloop-track {
+    animation: none;
+  }
+
+  .orbit-item {
+    animation: none;
+  }
+
+  .orb-core,
+  .ring-1,
+  .ring-2,
+  .ring-3 {
+    animation: none;
+  }
+
+  .hero-3d-model model-viewer {
+    --animation-name: none;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
