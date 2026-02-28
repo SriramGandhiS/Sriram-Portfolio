@@ -3069,7 +3069,9 @@ iframe.show {
 .pc-details h3 {
   font-weight: 600;
   margin: 0;
-  font-size: min(5svh, 3em);
+  font-size: min(4svh, 2.5em);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   background-image: linear-gradient(to right, #5227FF, #FF9FFC, #B19EEF, #5227FF);
   background-size: 300% 100%;
   -webkit-text-fill-color: transparent;
