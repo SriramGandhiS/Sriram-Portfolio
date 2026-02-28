@@ -3070,11 +3070,12 @@ iframe.show {
   font-weight: 600;
   margin: 0;
   font-size: min(5svh, 3em);
-  background-image: linear-gradient(to bottom, #fff, #6f6fbe);
-  background-size: 1em 1.5em;
+  background-image: linear-gradient(to right, #5227FF, #FF9FFC, #B19EEF, #5227FF);
+  background-size: 300% 100%;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+  animation: gradient-sweep 8s linear infinite;
 }
 
 .pc-details p {
@@ -3084,11 +3085,22 @@ iframe.show {
   font-size: 16px;
   margin: 0 auto;
   width: min-content;
-  background-image: linear-gradient(to bottom, #fff, #4a4ac0);
-  background-size: 1em 1.5em;
+  background-image: linear-gradient(to right, #5227FF, #FF9FFC, #B19EEF, #5227FF);
+  background-size: 300% 100%;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+  animation: gradient-sweep 8s linear infinite;
+}
+
+@keyframes gradient-sweep {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 @keyframes glow-bg {
