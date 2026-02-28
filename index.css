@@ -2911,26 +2911,23 @@ iframe.show {
   inset: 0;
   z-index: 5;
   pointer-events: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10%;
 }
 
 .code-icon {
-  width: 100px;
-  height: 100px;
-  color: #fff;
-  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
-  opacity: 0;
-  stroke-width: 2.5;
-  transition: opacity 0.4s ease, transform 0.1s ease-out;
-  animation: flow 3s ease-in-out infinite alternate;
-  /* Pixelated/Grainy Effect */
-  mask-image: radial-gradient(circle, #000 15%, transparent 15%);
-  mask-size: 3px 3px;
-  -webkit-mask-image: radial-gradient(circle, #000 15%, transparent 15%);
-  -webkit-mask-size: 3px 3px;
+  width: 90px;
+  height: 90px;
+  color: #71C4FF;
+  filter: drop-shadow(0 0 15px rgba(113, 196, 255, 0.7));
+  opacity: 0.25;
+  /* Increased base visibility */
+  stroke-width: 2;
+  transition: all 0.6s ease;
+  animation: flow 4s ease-in-out infinite alternate;
+  /* Digital Pixel Effect */
+  mask-image: radial-gradient(circle, #000 60%, transparent 60%);
+  mask-size: 4px 4px;
+  -webkit-mask-image: radial-gradient(circle, #000 60%, transparent 60%);
+  -webkit-mask-size: 4px 4px;
 }
 
 @keyframes flow {
@@ -2946,31 +2943,32 @@ iframe.show {
 .pc-card:hover .code-icon,
 .pc-card.active .code-icon {
   opacity: 1;
+  filter: drop-shadow(0 0 25px rgba(113, 196, 255, 1)) brightness(1.5);
   animation-play-state: running;
 }
 
 .icon-left {
-  transform: translate3d(-30%, 0, 40px);
+  transform: translate3d(-140px, -20px, 40px);
 }
 
 .icon-right {
-  transform: translate3d(30%, 0, 40px);
+  transform: translate3d(50px, -20px, 40px);
 }
 
 .icon-tl {
-  transform: translate3d(-35%, -60%, 20px) scale(0.8);
+  transform: translate3d(-120px, -180px, 20px) scale(0.7);
 }
 
 .icon-tr {
-  transform: translate3d(35%, -60%, 20px) scale(0.8);
+  transform: translate3d(40px, -180px, 20px) scale(0.7);
 }
 
 .icon-bl {
-  transform: translate3d(-35%, 60%, 20px) scale(0.8);
+  transform: translate3d(-130px, 140px, 20px) scale(0.7);
 }
 
 .icon-br {
-  transform: translate3d(35%, 60%, 20px) scale(0.8);
+  transform: translate3d(50px, 140px, 20px) scale(0.7);
 }
 
 .pc-avatar-content::before {
@@ -3078,17 +3076,20 @@ iframe.show {
 .pc-details {
   width: 100%;
   position: absolute;
-  bottom: 60px;
+  bottom: 40px;
+  /* Lower position */
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .pc-details h3 {
   font-weight: 700;
   margin: 0;
-  font-size: 1.8rem;
-  letter-spacing: 0.5em;
+  font-size: 1.6rem;
+  /* Slightly smaller */
+  letter-spacing: 0.35em;
+  /* Cleaner elongation */
   text-transform: uppercase;
   background-image: linear-gradient(to right, #5227FF, #FF9FFC, #B19EEF, #5227FF);
   background-size: 300% 100%;
@@ -3096,21 +3097,21 @@ iframe.show {
   background-clip: text;
   -webkit-background-clip: text;
   animation: gradient-sweep 8s linear infinite;
-  text-indent: 0.5em;
-  /* Centers text better with letter-spacing */
+  text-indent: 0.35em;
 }
 
 .pc-details p {
   font-weight: 500;
   position: relative;
   white-space: nowrap;
-  font-size: 12px;
-  letter-spacing: 0.3em;
+  font-size: 11px;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   margin: 0 auto;
   width: min-content;
-  color: rgba(255, 255, 255, 0.6);
-  opacity: 0.8;
+  color: rgba(255, 255, 255, 0.45);
+  /* Elegant semi-transparent white */
+  opacity: 1;
 }
 
 @keyframes gradient-sweep {
