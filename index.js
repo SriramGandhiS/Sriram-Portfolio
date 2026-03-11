@@ -67,7 +67,7 @@ window.addEventListener('mousemove', e => {
 // =======================
 // 3D Parallax Tilt Engine
 // =======================
-document.querySelectorAll('.project-card, .company-card, .contact-3d-card').forEach(card => {
+document.querySelectorAll('.jsm-project-card, .company-card, .contact-3d-card').forEach(card => {
   // Add glare element if missing
   if (!card.querySelector('.card-glare')) {
     const glare = document.createElement('div');
@@ -84,8 +84,8 @@ document.querySelectorAll('.project-card, .company-card, .contact-3d-card').forE
     const centerY = rect.height / 2;
 
     // Moderate Tilt (Not too aggressive, not too subtle)
-    let rotateX = ((y - centerY) / centerY) * -15;
-    let rotateY = ((x - centerX) / centerX) * 15;
+    let rotateX = ((y - centerY) / centerY) * -5;
+    let rotateY = ((x - centerX) / centerX) * 5;
 
     // Slightly less tilt for the big contact card
     if (card.classList.contains('contact-3d-card')) {
@@ -97,7 +97,7 @@ document.querySelectorAll('.project-card, .company-card, .contact-3d-card').forE
     card.style.setProperty('--mouse-x', `${x}px`);
     card.style.setProperty('--mouse-y', `${y}px`);
 
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
   });
 
   card.addEventListener('mouseleave', () => {
@@ -581,3 +581,32 @@ document.querySelectorAll('.jsm-project-card').forEach(card => {
   startEngine();
 
 })();
+
+
+// =======================
+// Brochure Viewer Modal Logic
+// =======================
+function openBrochureModal() {
+  const modal = document.getElementById('brochureViewerModal');
+  if (modal) {
+    modal.classList.add('active');
+  }
+}
+
+function closeBrochureModal() {
+  const modal = document.getElementById('brochureViewerModal');
+  if (modal) {
+    modal.classList.remove('active');
+  }
+}
+
+// Close the brochure modal if user clicks outside the image (on the overlay)
+const brochureModal = document.getElementById('brochureViewerModal');
+if (brochureModal) {
+  brochureModal.addEventListener('click', (e) => {
+    // If they click on the overlay itself (not the image or the button inside)
+    if (e.target === brochureModal) {
+      closeBrochureModal();
+    }
+  });
+}

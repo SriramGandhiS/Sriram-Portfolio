@@ -14,6 +14,7 @@
 <body>
 
   <!-- NAVBAR -->
+  <!-- NAVBAR -->
   <nav class="navbar">
     <!-- Left: Brand -->
     <div class="nav-brand">
@@ -26,6 +27,7 @@
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Achievements</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="academic/index.html" class="nav-academic" target="_blank">Academic</a></li>
@@ -291,6 +293,56 @@
 
 
 
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" class="about-section achv-section">
+
+    <div class="achv-magazine" style="flex-direction: column; align-items: center; text-align: center;">
+
+      <!-- Content (centered) -->
+      <div class="achv-right" style="text-align: center; padding-top: 0;">
+        <p class="about-eyebrow">— ACHIEVEMENT</p>
+        <h2 class="about-heading">Hackathon <span class="about-heading-accent">1st Place</span></h2>
+        <p class="about-sub">Rathinam College &middot; Inter-College Hackathon &middot; Tamil Nadu</p>
+
+        <p class="about-desc" style="margin: 0 auto;">
+          Led the development of the core application as part of a team at the
+          Rathinam College Inter-College Hackathon. Collaborated with teammates to
+          design, build, and pitch a fully functional product within the competition
+          timeframe &mdash; earning 1st Place among 50+ teams and 200+ participants
+          from colleges across Tamil Nadu.
+        </p>
+
+        <!-- Mini Stats (centered) -->
+        <div class="achv-stats" style="justify-content: center;">
+          <div class="achv-stat">
+            <span class="achv-stat-num">50+</span>
+            <p>Teams</p>
+          </div>
+          <div class="achv-stat">
+            <span class="achv-stat-num">200+</span>
+            <p>Students</p>
+          </div>
+          <div class="achv-stat">
+            <span class="achv-stat-num">1st</span>
+            <p>Prize</p>
+          </div>
+        </div>
+
+        <!-- Both images side by side with glow -->
+        <div class="achv-images-row">
+          <div class="achv-brochure-glow">
+            <img src="/images/hack.jpeg" alt="Team receiving 1st prize">
+          </div>
+          <div class="achv-brochure-glow">
+            <img src="/images/temp.jpeg" alt="Event Brochure">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
   <!-- PROJECTS -->
   <section id="projects" class="jsm-section">
     <p class="jsm-section-subtext">MY WORK</p>
@@ -381,10 +433,8 @@
       <!-- Project 4: Hiresense -->
       <div class="jsm-project-card">
         <div class="card-glare"></div>
-        <div class="jsm-card-image-box">
-          <video autoplay loop muted playsinline class="jsm-card-video">
-            <source src="/images/hiresense-preview.mp4" type="video/mp4">
-          </video>
+        <div class="jsm-card-image-box scroll-box">
+          <img src="/images/hiresense_preview.png" alt="Hiresense Project Preview" class="jsm-card-img scroll-anim">
           <div class="jsm-card-img-overlay">
             <div class="jsm-github-icon" onclick="window.open('https://github.com/SriramGandhiS', '_blank')">
               <img src="/images/github.png" alt="github">
@@ -409,6 +459,7 @@
 
     </div>
   </section>
+
 
   <!-- CONTACT -->
   <section id="contact" class="jsm-section jsm-contact-section">
@@ -798,6 +849,14 @@
         <embed src="" id="resumeFrame" type="application/pdf" width="100%" height="100%"
           style="border-radius: 0 0 10px 10px;" />
       </div>
+    </div>
+  </div>
+
+  <!-- BROCHURE VIEWER MODAL -->
+  <div class="modal-overlay brochure-modal-overlay" id="brochureViewerModal">
+    <div class="brochure-modal-content">
+      <span class="close-modal" onclick="closeBrochureModal()">&times;</span>
+      <img src="/images/temp.jpeg" alt="Hackathon Brochure" class="brochure-modal-img">
     </div>
   </div>
 
