@@ -3726,3 +3726,96 @@ iframe.show {
     width: 100%;
   }
 }
+
+
+/* ═══════════════════════════════════════════════ */
+/* GLOBAL MOBILE OPTIMIZATION                     */
+/* ═══════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+  /* Section spacing */
+  .jsm-section {
+    padding: 40px 16px;
+  }
+
+  .about-section {
+    padding: 40px 16px;
+  }
+
+  /* Typography */
+  .jsm-section-headtext {
+    font-size: 1.8rem;
+  }
+
+  .jsm-section-subtext {
+    font-size: 0.75rem;
+  }
+
+  .jsm-section-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  /* About section */
+  .about-heading {
+    font-size: 1.6rem;
+  }
+
+  .about-desc {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .about-sub {
+    font-size: 0.75rem;
+  }
+
+  /* Project cards */
+  .jsm-projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .jsm-project-card {
+    padding: 12px;
+  }
+
+  .jsm-card-content h3 {
+    font-size: 1rem;
+  }
+
+  .jsm-card-content p {
+    font-size: 0.82rem;
+  }
+
+  /* Contact section */
+  .jsm-contact-grid {
+    padding: 0;
+  }
+
+  /* Nav */
+  .nav-links.active {
+    padding-top: 60px;
+  }
+
+  /* Stats */
+  .stat-num {
+    font-size: 1.8rem;
+  }
+
+  .achv-stat-num {
+    font-size: 1.2rem;
+  }
+
+  /* Achievement images */
+  .achv-brochure-glow img {
+    height: 200px;
+  }
+
+  /* Reduce animation intensity on mobile for performance */
+  .brochureDance,
+  .achvFloat {
+    animation-duration: 6s;
+  }
+}
