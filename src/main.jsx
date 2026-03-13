@@ -60,8 +60,14 @@ const AppNav = () => {
     );
 };
 
+// Mount the AppNav (PillNav)
+const navbarRoot = document.getElementById('navbar-root');
+if (navbarRoot) {
+    ReactDOM.createRoot(navbarRoot).render(<AppNav />);
+}
+
 // Mount the Lanyard component
-const lanyardRoot = document.getElementById('lanyard-root');
+const lanyardRoot = document.getElementById('lanyard-body-root');
 if (lanyardRoot) {
     ReactDOM.createRoot(lanyardRoot).render(
         <Suspense fallback={<div style={{ color: 'transparent' }}>Loading Lanyard...</div>}>

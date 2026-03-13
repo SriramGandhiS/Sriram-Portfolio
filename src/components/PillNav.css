@@ -6,8 +6,14 @@
 
 @media (max-width: 768px) {
     .pill-nav-container {
-        width: 100%;
-        left: 0;
+        position: fixed;
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        z-index: 10000;
+        display: flex;
+        justify-content: center;
     }
 }
 
@@ -162,6 +168,24 @@
     .mobile-only {
         display: block;
     }
+
+    .pill-nav {
+        background: rgba(15, 15, 15, 0.7) !important;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50px;
+        padding: 5px 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        width: auto;
+        min-width: 200px;
+    }
+    
+    .pill-logo {
+        width: 38px;
+        height: 38px;
+        background: var(--primary-glow);
+    }
 }
 
 .mobile-menu-button {
@@ -197,16 +221,20 @@
 
 .mobile-menu-popover {
     position: absolute;
-    top: 3em;
-    left: 1rem;
-    right: 1rem;
-    background: var(--base, #f0f0f0);
-    border-radius: 27px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    top: 55px; /* Adjust for new nav height */
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
     z-index: 998;
     opacity: 0;
     transform-origin: top center;
     visibility: hidden;
+    padding: 10px;
 }
 
 .mobile-menu-list {

@@ -8,8 +8,9 @@ export default defineConfig({
         dedupe: ['three']
     },
     server: {
-        port: 3000,
-        open: true
+        port: 5500,
+        host: '0.0.0.0',
+        strictPort: true
     },
     build: {
         minify: false

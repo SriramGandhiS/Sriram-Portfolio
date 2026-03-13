@@ -13,6 +13,8 @@ html {
   scroll-behavior: smooth;
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 :root {
@@ -2517,6 +2519,7 @@ iframe.show {
 
   /* Navbar: compact but fully visible */
   .navbar {
+    display: none !important; /* Hide old navbar on mobile to use React PillNav */
     padding: 0 20px;
     height: 70px;
   }
@@ -2666,6 +2669,16 @@ iframe.show {
     transform: none !important;
     visibility: visible !important;
     opacity: 1 !important;
+    z-index: 10;
+  }
+
+  #lanyard-root {
+    z-index: 30 !important;
+    pointer-events: none;
+  }
+
+  #lanyard-root > * {
+    pointer-events: auto;
   }
 
   /* About and other sections */
@@ -2679,18 +2692,19 @@ iframe.show {
   }
 
   /* === About section: stack vertically on mobile === */
-  .about-section>.about-inner,
-  .about-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .about-magazine {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
     gap: 40px;
     padding: 0 10px;
   }
 
   .about-photo-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
     width: 100%;
-    max-width: 340px;
     margin: 0 auto;
   }
 
@@ -2811,19 +2825,159 @@ iframe.show {
 
   /* Orbit tech stack: scale down to prevent overflow */
   .orbit-path-wrapper {
-    transform: scale(0.72) rotate(-8deg);
+    transform: scale(0.65) rotate(-8deg); /* Reduced scale slightly for better containment */
     transform-origin: center center;
-    width: 400px;
-    /* keep original, scale handles sizing */
+    width: 320px; /* Reduced width to fit 320px screens */
   }
 
   .orbit-tech-stack {
     overflow: hidden;
-    height: 140px;
+    height: 120px; /* Reduced height */
   }
 }
 
-/* ═══ LOGO LOOP (Infinite Marquee) ═══ */
+/* ═══ GLOBAL MOBILE REFINEMENTS ═══ */
+@media (max-width: 768px) {
+  /* Prevent any element from causing horizontal scroll */
+  * {
+    max-width: 100vw;
+  }
+
+  /* Hero adjustments */
+  .hero-name {
+    font-size: clamp(2.2rem, 8vw, 3.5rem) !important;
+  }
+  .tagline {
+    font-size: 1.1rem !important;
+    padding: 0 10px;
+  }
+  .cta-group {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .resume-btn {
+    width: 160px;
+    text-align: center;
+  }
+  
+  /* About Section Centering */
+  .about-photo-wrap {
+    margin: 0 auto 40px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .photo-frame {
+    width: 260px; /* Fixed width for better centering */
+    height: 350px;
+  }
+  .about-content {
+    text-align: center;
+  }
+  .about-heading {
+    text-align: center;
+    font-size: 2.2rem;
+  }
+  .about-sub {
+    text-align: center;
+  }
+  .about-desc {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.95rem;
+  }
+  .badge-row {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .about-stats {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  /* Orbit Tech adjustments */
+  .orbit-tech-stack {
+    margin-top: 20px !important;
+  }
+
+  /* Contact Form refinements */
+  .jsm-form-card {
+    padding: 30px 20px;
+    width: 100%;
+  }
+
+  /* Achievement Section refinements */
+  .achv-stats {
+    gap: 15px;
+  }
+  .achv-stat-num {
+    font-size: 1.2rem;
+  }
+  .achv-images-row {
+    width: 100%;
+    gap: 10px;
+  }
+  .achv-brochure-glow img {
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 15px;
+  }
+  .nav-logo {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+  
+  .hero {
+    padding-top: 100px;
+  }
+  .hero-name {
+    font-size: 2.2rem !important;
+  }
+  
+  /* Stack buttons further on very small screens */
+  .cta-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  .resume-btn {
+    width: 100%;
+    max-width: 240px;
+  }
+
+  /* Projects grid single column forcing */
+  .jsm-projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Profile card scale down and centering for very small screens */
+  .pc-card-wrapper {
+    max-width: 280px;
+    margin: 0 auto !important;
+    display: block;
+  }
+  .pc-card {
+    height: 380px;
+    margin: 0 auto;
+  }
+  
+  .orbit-tech-stack {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 30px auto 0 !important;
+    overflow: hidden;
+  }
+  
+  /* Contact section orb hiding or shrinking */
+  .jsm-earth-container {
+    min-height: 300px;
+  }
+}
 .logoloop-container {
   position: relative;
   width: 100%;

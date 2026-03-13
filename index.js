@@ -1,5 +1,5 @@
 // =======================
-// Mouse Particle Effect (Standard)
+// Mouse & Touch Particle Effect
 // =======================
 const canvas = document.createElement('canvas');
 canvas.id = 'mouseParticles';
@@ -12,6 +12,7 @@ document.body.appendChild(canvas);
 
 const ctx = canvas.getContext('2d');
 let particles = [];
+const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
 function resizeCanvas() {
   canvas.width = window.innerWidth;
@@ -24,9 +25,9 @@ class Particle {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.size = Math.random() * 2 + 1;
-    this.speedX = (Math.random() - 0.5) * 0.5;
-    this.speedY = Math.random() * 0.5 - 0.25;
+    this.size = Math.random() * (isMobile ? 1.5 : 2) + 1;
+    this.speedX = (Math.random() - 0.5) * (isMobile ? 0.3 : 0.5);
+    this.speedY = (Math.random() * 0.5 - 0.25) * (isMobile ? 0.6 : 1);
     this.life = 0.55;
   }
   update() {
@@ -35,7 +36,6 @@ class Particle {
     this.life -= 0.005;
   }
   draw() {
-    // PINK PARTICLES
     const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 2);
     gradient.addColorStop(0, `rgba(255, 0, 127, ${this.life})`);
     gradient.addColorStop(1, `rgba(255, 0, 127, 0)`);
@@ -57,52 +57,59 @@ function animateParticles() {
 }
 animateParticles();
 
-window.addEventListener('mousemove', e => {
-  for (let i = 0; i < 6; i++) {
-    particles.push(new Particle(e.x, e.y));
+const handleInteraction = (x, y) => {
+  const count = isMobile ? 2 : 6;
+  for (let i = 0; i < count; i++) {
+    particles.push(new Particle(x, y));
   }
-});
+};
+
+window.addEventListener('mousemove', e => handleInteraction(e.clientX, e.clientY));
+window.addEventListener('touchmove', e => {
+  const touch = e.touches[0];
+  handleInteraction(touch.clientX, touch.clientY);
+}, { passive: true });
 
 
 // =======================
-// 3D Parallax Tilt Engine
+// 3D Parallax Tilt Engine (Mouse + Touch)
 // =======================
-document.querySelectorAll('.jsm-project-card, .company-card, .contact-3d-card').forEach(card => {
-  // Add glare element if missing
+document.querySelectorAll('.jsm-project-card, .company-card').forEach(card => {
   if (!card.querySelector('.card-glare')) {
     const glare = document.createElement('div');
     glare.classList.add('card-glare');
     card.appendChild(glare);
   }
 
-  card.addEventListener('mousemove', (e) => {
+  const handleMove = (clientX, clientY) => {
     const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
 
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    // Moderate Tilt (Not too aggressive, not too subtle)
     let rotateX = ((y - centerY) / centerY) * -5;
     let rotateY = ((x - centerX) / centerX) * 5;
 
-    // Slightly less tilt for the big contact card
-    if (card.classList.contains('contact-3d-card')) {
-      rotateX *= 0.5;
-      rotateY *= 0.5;
-    }
-
-    // Glare Position
     card.style.setProperty('--mouse-x', `${x}px`);
     card.style.setProperty('--mouse-y', `${y}px`);
-
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-  });
+  };
 
-  card.addEventListener('mouseleave', () => {
+  const resetTilt = () => {
     card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale(1)`;
-  });
+  };
+
+  card.addEventListener('mousemove', e => handleMove(e.clientX, e.clientY));
+  card.addEventListener('mouseleave', resetTilt);
+
+  // Touch Support
+  card.addEventListener('touchmove', e => {
+    const touch = e.touches[0];
+    handleMove(touch.clientX, touch.clientY);
+  }, { passive: true });
+  card.addEventListener('touchend', resetTilt);
 });
 
 
@@ -111,10 +118,13 @@ document.querySelectorAll('.jsm-project-card, .company-card, .contact-3d-card').
 // =======================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", function (e) {
+    const targetId = this.getAttribute("href");
+    if (targetId === "#") return;
     e.preventDefault();
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-      behavior: "smooth"
-    });
+    const targetEl = document.querySelector(targetId);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: "smooth" });
+    }
   });
 });
 
@@ -126,11 +136,8 @@ const certBtn = document.getElementById('certBtn');
 const certModal = document.getElementById('certModal');
 const closeBtn = document.querySelector('.close-modal');
 
-// Data
 const certData = {
-  "AWS": [
-    { name: "AWS Academy Graduate", file: "certificates/aws_real.pdf" }
-  ],
+  "AWS": [{ name: "AWS Academy Graduate", file: "certificates/aws_real.pdf" }],
   "MongoDB": [
     { name: "MongoDB Basics", file: "certificates/Mango Db.pdf#page=1" },
     { name: "MongoDB Aggregation", file: "certificates/Mango Db.pdf#page=2" },
@@ -154,27 +161,14 @@ const certData = {
     { name: "JavaScript (Basic)", file: "certificates/Hacker ranker.pdf#page=6" },
     { name: "Node.js (Basic)", file: "certificates/Hacker ranker.pdf#page=7" }
   ],
-  "Arduino": [
-    { name: "Participant Certificate", file: "certificates/arduino_real.pdf" }
-  ],
-  "Internshala": [
-    { name: "Web Development", file: "certificates/internshala_real.pdf" }
-  ]
+  "Arduino": [{ name: "Participant Certificate", file: "certificates/arduino_real.pdf" }],
+  "Internshala": [{ name: "Web Development", file: "certificates/internshala_real.pdf" }]
 };
-// Open/Close Cert Modal
-if (certBtn) {
-  certBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    certModal.classList.add('active');
-  });
-}
-if (closeBtn) closeBtn.addEventListener('click', () => { certModal.classList.remove('active'); });
-if (certModal) certModal.addEventListener('click', (e) => { if (e.target === certModal) certModal.classList.remove('active'); });
 
+if (certBtn) certBtn.addEventListener('click', e => { e.preventDefault(); certModal.classList.add('active'); });
+if (closeBtn) closeBtn.addEventListener('click', () => certModal.classList.remove('active'));
+if (certModal) certModal.addEventListener('click', e => { if (e.target === certModal) certModal.classList.remove('active'); });
 
-// =======================
-// NEW Interactive Parallax Certificates
-// =======================
 const certParallaxOverlay = document.getElementById('certParallaxOverlay');
 const parallaxContent = document.getElementById('parallaxContent');
 const closeParallaxBtn = document.getElementById('closeParallaxBtn');
@@ -182,431 +176,143 @@ const closeParallaxBtn = document.getElementById('closeParallaxBtn');
 function openParallaxView(companyName) {
   const certs = certData[companyName] || [];
   if (certs.length === 0) return;
-
-  // Clear previous
   parallaxContent.innerHTML = '';
-
-  // Show overlay
   certParallaxOverlay.classList.add('active');
-
   if (typeof pdfjsLib !== 'undefined') {
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
   }
-
   certs.forEach((cert, index) => {
     const card = document.createElement('div');
-    card.className = 'p-cert-card p-cert-iframe-card';
+    card.className = 'p-cert-card';
     card.style.animationDelay = `${index * 0.1}s`;
-
     const canvasId = `pdf-canvas-${companyName.replace(/[^a-zA-Z0-9]/g, '')}-${index}`;
     const fileUrl = cert.file.split('#')[0];
-
     card.innerHTML = `
       <canvas id="${canvasId}" style="width: 100%; height: 100%; object-fit: cover; background: #fff;"></canvas>
       <div class="cert-bento-label">
         <span class="cert-index">${index + 1} / ${certs.length}</span>
         <span class="cert-name">${cert.name}</span>
-        <a href="${fileUrl}" download class="cert-download-btn" title="Download">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-            <polyline points="7 10 12 15 17 10"></polyline>
-            <line x1="12" y1="15" x2="12" y2="3"></line>
-          </svg>
-        </a>
+        <a href="${fileUrl}" download class="cert-download-btn"><svg ...></svg></a>
       </div>
     `;
-
     parallaxContent.appendChild(card);
-
-    // Render PDF to Canvas
     if (typeof pdfjsLib !== 'undefined') {
       const pageNum = parseInt(cert.file.split('#page=')[1] || "1");
-
-      pdfjsLib.getDocument(fileUrl).promise.then(pdf => {
-        return pdf.getPage(pageNum);
-      }).then(page => {
+      pdfjsLib.getDocument(fileUrl).promise.then(pdf => pdf.getPage(pageNum)).then(page => {
         const canvas = document.getElementById(canvasId);
-        if (!canvas) return; // In case user closed modal before render
+        if (!canvas) return;
         const context = canvas.getContext('2d');
-
-        // Scale for high DPI display rendering quality
-        const viewport = page.getViewport({ scale: 2.0 });
+        const viewport = page.getViewport({ scale: 1.5 });
         canvas.height = viewport.height;
         canvas.width = viewport.width;
-
-        const renderContext = {
-          canvasContext: context,
-          viewport: viewport
-        };
-        page.render(renderContext);
-      }).catch(err => {
-        console.error("Error rendering PDF:", err);
+        page.render({ canvasContext: context, viewport: viewport });
       });
     }
   });
 }
 
-if (closeParallaxBtn) {
-  closeParallaxBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    certParallaxOverlay.classList.remove('active');
-    // Remove classes to trigger reverse animation before clearing
-    const cards = parallaxContent.querySelectorAll('.p-cert-card');
-    cards.forEach(card => card.className = 'p-cert-card');
-  });
-}
+if (closeParallaxBtn) closeParallaxBtn.addEventListener('click', () => certParallaxOverlay.classList.remove('active'));
+document.querySelectorAll('.company-card').forEach(card => card.addEventListener('click', () => openParallaxView(card.getAttribute('data-company'))));
 
-// Company Card Click -> Trigger Parallax directly
-document.querySelectorAll('.company-card').forEach(card => {
-  card.addEventListener('click', () => {
-    openParallaxView(card.getAttribute('data-company'));
-  });
-});
-
-
-// Resume Logic
 const resumeBtn = document.getElementById('resumeTriggerBtn');
 const resumeModal = document.getElementById('resumeModal');
 const closeResumeBtn = document.querySelector('.close-resume');
 const viewResumeCard = document.getElementById('viewResumeCard');
-const resumeViewerModal = document.getElementById('resumeViewerModal');
-const closeResumeViewerBtn = document.querySelector('.close-resume-viewer');
 const resumeFrame = document.getElementById('resumeFrame');
+const resumeViewerModal = document.getElementById('resumeViewerModal');
 
-if (resumeBtn) resumeBtn.addEventListener('click', (e) => { e.preventDefault(); resumeModal.classList.add('active'); });
+if (resumeBtn) resumeBtn.addEventListener('click', e => { e.preventDefault(); resumeModal.classList.add('active'); });
 if (closeResumeBtn) closeResumeBtn.addEventListener('click', () => resumeModal.classList.remove('active'));
-if (resumeModal) resumeModal.addEventListener('click', (e) => { if (e.target === resumeModal) resumeModal.classList.remove('active'); });
+if (viewResumeCard) viewResumeCard.addEventListener('click', () => {
+  resumeModal.classList.remove('active');
+  resumeViewerModal.classList.add('active');
+  resumeFrame.src = "certificates/Sriram_Resume.pdf";
+});
 
-if (viewResumeCard) {
-  viewResumeCard.addEventListener('click', () => {
-    resumeModal.classList.remove('active');
-    resumeViewerModal.classList.add('active');
-    resumeFrame.src = "certificates/Sriram_Resume.pdf";
-  });
-}
-
-if (closeResumeViewerBtn) {
-  closeResumeViewerBtn.addEventListener('click', () => {
-    resumeViewerModal.classList.remove('active');
-    resumeFrame.src = "";
-  });
-}
-
-// =======================
-// Reject Button Runaway Logic
-// =======================
-function addRunawayBehavior(btnEl) {
-  if (!btnEl) return;
-
-  btnEl.addEventListener('mouseover', function (e) {
-    // Randomize movement on hover
-    const x = Math.random() * 300 - 150; // -150 to 150 px
-    const y = Math.random() * 200 - 100; // -100 to 100 px
-
-    // Apply the transform
-    this.style.transition = 'transform 0.2s ease-out';
-    this.style.transform = `translate(${x}px, ${y}px) translateZ(60px)`;
-  });
-
-  btnEl.addEventListener('click', function (e) {
-    // In the rare case they catch it!
-    alert("You're fast! But I'd still love to work with you 😉");
-    this.innerText = "Okay, maybe not 😅";
-  });
-}
-
+// Runaway toggle logic
 const rejectBtn = document.getElementById('rejectBtn');
-addRunawayBehavior(rejectBtn);
+if (rejectBtn) {
+  rejectBtn.addEventListener('mouseover', function() {
+    this.style.transform = `translate(${Math.random()*200-100}px, ${Math.random()*150-75}px)`;
+  });
+}
 
-// =======================
-// About Section: Stat Counters + Skill Bars + Parallax Blobs
-// =======================
-(function () {
-  // --- Stat counter ---
-  function startCounters() {
+// Stats & Skill Bars logic
+(function() {
+  const startCounters = () => {
     document.querySelectorAll('.stat-num, .lc-total-num, .lc-meta-val[data-target]').forEach(el => {
       const target = parseInt(el.getAttribute('data-target'));
-      if (isNaN(target)) return;
-      const duration = 1400;
-      const step = target / (duration / 16);
       let current = 0;
+      const step = target / 60;
       const timer = setInterval(() => {
         current += step;
         if (current >= target) { current = target; clearInterval(timer); }
         el.textContent = Math.floor(current);
       }, 16);
     });
-  }
-
-  // --- Skill bars ---
-  function startSkillBars() {
-    document.querySelectorAll('.skill-bar-fill').forEach(bar => {
-      bar.style.width = bar.getAttribute('data-width') + '%';
-    });
-  }
-
-  // Trigger once on scroll into view
-  let triggered = false;
-  const aboutSection = document.getElementById('about');
-  if (aboutSection) {
+  };
+  const startBars = () => document.querySelectorAll('.skill-bar-fill').forEach(b => b.style.width = b.dataset.width + '%');
+  const about = document.getElementById('about');
+  if (about) {
     const obs = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting && !triggered) {
-        triggered = true;
-        startCounters();
-        startSkillBars();
-        obs.disconnect();
-      }
-    }, { threshold: 0.25 });
-    obs.observe(aboutSection);
+      if (entries[0].isIntersecting) { startCounters(); startBars(); obs.disconnect(); }
+    }, { threshold: 0.2 });
+    obs.observe(about);
   }
-
-  // --- Parallax blobs on scroll ---
-  const blob1 = document.querySelector('.blob-1');
-  const blob2 = document.querySelector('.blob-2');
-  window.addEventListener('scroll', () => {
-    if (!aboutSection || !blob1 || !blob2) return;
-    const rect = aboutSection.getBoundingClientRect();
-    const rel = -rect.top;
-    blob1.style.transform = `translateY(${rel * 0.18}px)`;
-    blob2.style.transform = `translateY(${rel * -0.12}px)`;
-  }, { passive: true });
 })();
 
-// =======================
-// Mobile Menu Toggle
-// =======================
+// Mobile Menu improvements
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.querySelector('.nav-links');
-const navLinksItems = document.querySelectorAll('.nav-links a');
-
 if (navToggle && navLinks) {
   navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('active');
     navLinks.classList.toggle('active');
-    // Lock/Unlock body scroll
-    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
   });
-
-  // Close menu when a link is clicked
-  navLinksItems.forEach(item => {
-    item.addEventListener('click', () => {
-      navToggle.classList.remove('active');
-      navLinks.classList.remove('active');
-      document.body.style.overflow = 'auto';
-    });
-  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navToggle.classList.remove('active');
+    navLinks.classList.remove('active');
+    document.body.style.overflow = '';
+  }));
 }
 
-// =======================
-// JS Mastery Project Cards: Mouse Spotlight Effect
-// =======================
-document.querySelectorAll('.jsm-project-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    card.style.setProperty('--mouse-x', `${x}px`);
-    card.style.setProperty('--mouse-y', `${y}px`);
-  });
-});
-
-// =======================
-// PROFILE CARD 3D TILT ENGINE & LOGIC (Vanilla JS)
-// =======================
+// PROFILE CARD 3D TILT ENGINE (Enabling Mobile)
 (function initProfileCard() {
   const wrapper = document.getElementById('profileCardWrapper');
   const shell = document.getElementById('profileCardShell');
-  const contactBtn = document.getElementById('profileContactBtn');
-
   if (!wrapper || !shell) return;
 
-  const ANIMATION_CONFIG = {
-    INITIAL_DURATION: 1200,
-    INITIAL_X_OFFSET: 70,
-    INITIAL_Y_OFFSET: 60,
-    DEVICE_BETA_OFFSET: 20,
-    ENTER_TRANSITION_MS: 180
-  };
-
-  const clamp = (v, min = 0, max = 100) => Math.min(Math.max(v, min), max);
-  const round = (v, precision = 3) => parseFloat(v.toFixed(precision));
-  const adjust = (v, fMin, fMax, tMin, tMax) => round(tMin + ((tMax - tMin) * (v - fMin)) / (fMax - fMin));
-
-  let enterTimer = null;
-  let leaveRaf = null;
-
-  // Tilt Engine State
-  let rafId = null;
+  let currentX = 0, currentY = 0, targetX = 0, targetY = 0;
   let running = false;
-  let lastTs = 0;
-  let currentX = 0;
-  let currentY = 0;
-  let targetX = 0;
-  let targetY = 0;
 
-  const DEFAULT_TAU = 0.14;
-  const INITIAL_TAU = 0.6;
-  let initialUntil = 0;
-
-  // Device Orientation State
-  // Disabled by default on mobile in this version per config: `enableMobileTilt={false}`
-  const enableMobileTilt = false;
-
-  const setVarsFromXY = (x, y) => {
-    const width = shell.clientWidth || 1;
-    const height = shell.clientHeight || 1;
-
-    const percentX = clamp((100 / width) * x);
-    const percentY = clamp((100 / height) * y);
-
-    const centerX = percentX - 50;
-    const centerY = percentY - 50;
-
-    wrapper.style.setProperty('--pointer-x', `${percentX}%`);
-    wrapper.style.setProperty('--pointer-y', `${percentY}%`);
-    wrapper.style.setProperty('--background-x', `${adjust(percentX, 0, 100, 35, 65)}%`);
-    wrapper.style.setProperty('--background-y', `${adjust(percentY, 0, 100, 35, 65)}%`);
-    wrapper.style.setProperty('--pointer-from-center', `${clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`);
-    wrapper.style.setProperty('--pointer-from-top', `${percentY / 100}`);
-    wrapper.style.setProperty('--pointer-from-left', `${percentX / 100}`);
-    wrapper.style.setProperty('--rotate-x', `${round(-(centerX / 25))}deg`);
-    wrapper.style.setProperty('--rotate-y', `${round(centerY / 20)}deg`);
+  const setVars = (x, y) => {
+    const w = shell.clientWidth || 1, h = shell.clientHeight || 1;
+    const px = (x/w)*100, py = (y/h)*100;
+    wrapper.style.setProperty('--pointer-x', px + '%');
+    wrapper.style.setProperty('--pointer-y', py + '%');
+    wrapper.style.setProperty('--rotate-x', (-(px-50)/20) + 'deg');
+    wrapper.style.setProperty('--rotate-y', ((py-50)/15) + 'deg');
+    wrapper.style.setProperty('--card-opacity', '1');
   };
 
-  const step = ts => {
+  const step = () => {
     if (!running) return;
-    if (lastTs === 0) lastTs = ts;
-    const dt = (ts - lastTs) / 1000;
-    lastTs = ts;
-
-    const tau = ts < initialUntil ? INITIAL_TAU : DEFAULT_TAU;
-    const k = 1 - Math.exp(-dt / tau);
-
-    currentX += (targetX - currentX) * k;
-    currentY += (targetY - currentY) * k;
-
-    setVarsFromXY(currentX, currentY);
-
-    const stillFar = Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05;
-
-    if (stillFar || document.hasFocus()) {
-      rafId = requestAnimationFrame(step);
-    } else {
-      running = false;
-      lastTs = 0;
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-        rafId = null;
-      }
-    }
+    currentX += (targetX - currentX) * 0.1;
+    currentY += (targetY - currentY) * 0.1;
+    setVars(currentX, currentY);
+    if (Math.abs(targetX - currentX) > 0.1) requestAnimationFrame(step);
+    else running = false;
   };
 
-  const startEngine = () => {
-    if (running) return;
-    running = true;
-    lastTs = 0;
-    rafId = requestAnimationFrame(step);
+  const handleInput = (clientX, clientY) => {
+    const r = shell.getBoundingClientRect();
+    targetX = clientX - r.left; targetY = clientY - r.top;
+    if (!running) { running = true; requestAnimationFrame(step); }
   };
 
-  const setTarget = (x, y) => {
-    targetX = x;
-    targetY = y;
-    startEngine();
-  };
-
-  const toCenter = () => {
-    setTarget(shell.clientWidth / 2, shell.clientHeight / 2);
-  };
-
-  const getOffsets = (evt) => {
-    const rect = shell.getBoundingClientRect();
-    return { x: evt.clientX - rect.left, y: evt.clientY - rect.top };
-  };
-
-  // Event Listeners
-  shell.addEventListener('pointerenter', (e) => {
-    shell.classList.add('active');
-    wrapper.classList.add('active');
-    shell.classList.add('entering');
-
-    if (enterTimer) clearTimeout(enterTimer);
-    enterTimer = setTimeout(() => {
-      shell.classList.remove('entering');
-    }, ANIMATION_CONFIG.ENTER_TRANSITION_MS);
-
-    const { x, y } = getOffsets(e);
-    setTarget(x, y);
-  });
-
-  shell.addEventListener('pointermove', (e) => {
-    const { x, y } = getOffsets(e);
-    setTarget(x, y);
-  });
-
-  shell.addEventListener('pointerleave', () => {
-    toCenter();
-
-    const checkSettle = () => {
-      const settled = Math.hypot(targetX - currentX, targetY - currentY) < 0.6;
-      if (settled) {
-        shell.classList.remove('active');
-        wrapper.classList.remove('active');
-        leaveRaf = null;
-      } else {
-        leaveRaf = requestAnimationFrame(checkSettle);
-      }
-    };
-
-    if (leaveRaf) cancelAnimationFrame(leaveRaf);
-    leaveRaf = requestAnimationFrame(checkSettle);
-  });
-
-  if (contactBtn) {
-    contactBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      // Scroll to contact section
-      document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
-    });
-  }
-
-  // Initial Entry Animation
-  const initialX = (shell.clientWidth || 0) - ANIMATION_CONFIG.INITIAL_X_OFFSET;
-  const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET;
-  currentX = initialX;
-  currentY = initialY;
-  setVarsFromXY(currentX, currentY);
-  toCenter();
-
-  initialUntil = performance.now() + ANIMATION_CONFIG.INITIAL_DURATION;
-  startEngine();
-
+  shell.addEventListener('mousemove', e => handleInput(e.clientX, e.clientY));
+  shell.addEventListener('touchmove', e => handleInput(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
+  shell.addEventListener('mouseleave', () => { targetX = shell.clientWidth/2; targetY = shell.clientHeight/2; });
+  shell.addEventListener('touchend', () => { targetX = shell.clientWidth/2; targetY = shell.clientHeight/2; });
 })();
-
-
-// =======================
-// Brochure Viewer Modal Logic
-// =======================
-function openBrochureModal() {
-  const modal = document.getElementById('brochureViewerModal');
-  if (modal) {
-    modal.classList.add('active');
-  }
-}
-
-function closeBrochureModal() {
-  const modal = document.getElementById('brochureViewerModal');
-  if (modal) {
-    modal.classList.remove('active');
-  }
-}
-
-// Close the brochure modal if user clicks outside the image (on the overlay)
-const brochureModal = document.getElementById('brochureViewerModal');
-if (brochureModal) {
-  brochureModal.addEventListener('click', (e) => {
-    // If they click on the overlay itself (not the image or the button inside)
-    if (e.target === brochureModal) {
-      closeBrochureModal();
-    }
-  });
-}
