@@ -140,7 +140,7 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
 
     return (
         <>
-            <group position={[6, 7, 0]}>
+            <group position={[0, 9, 0]}>
                 <RigidBody ref={fixed} {...segmentProps} type="fixed" />
                 <RigidBody position={[0, -3, 0]} ref={j1} {...segmentProps}>
                     <BallCollider args={[0.1]} />

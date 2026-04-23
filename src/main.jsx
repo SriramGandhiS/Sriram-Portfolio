@@ -66,12 +66,14 @@ if (navbarRoot) {
     ReactDOM.createRoot(navbarRoot).render(<AppNav />);
 }
 
-// Mount the Lanyard component
+// Mount the Lanyard component only on Desktop
 const lanyardRoot = document.getElementById('lanyard-body-root');
-if (lanyardRoot) {
+if (lanyardRoot && window.innerWidth > 768) {
     ReactDOM.createRoot(lanyardRoot).render(
         <Suspense fallback={<div style={{ color: 'transparent' }}>Loading Lanyard...</div>}>
             <Lanyard position={[0, 0, 30]} gravity={[0, -40, 0]} />
         </Suspense>
     );
 }
+
+

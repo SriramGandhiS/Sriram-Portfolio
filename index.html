@@ -13,9 +13,20 @@
 
 <body>
 
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="loader-content">
+      <div class="loader-logo">S</div>
+      <div class="loader-bar-wrap">
+        <div class="loader-bar"></div>
+      </div>
+      <p>LOADING EXPERIENCE...</p>
+    </div>
+  </div>
+
   <!-- NAVBAR -->
   <div id="navbar-root"></div>
-  <div id="lanyard-body-root" style="position: fixed; inset: 0; pointer-events: none; z-index: 20;"></div>
+  <div id="lanyard-body-root" style="position: absolute; top: 0; left: 0; width: 100%; height: 100vh; pointer-events: none; z-index: 20; overflow: hidden;"></div>
   <nav class="navbar">
     <!-- Left: Brand -->
     <div class="nav-brand">
@@ -54,8 +65,7 @@
       <!-- Main Text Content -->
       <div class="hero-content">
         <h1 class="hero-name">Hi, I'm <span class="hero-name-gradient">Sriram</span></h1>
-        <p class="tagline"><span style="color: var(--primary-glow); font-weight: 800;">&lt;/&gt;</span> Front-End &amp;
-          Back-End Developer</p>
+        <p class="tagline"><span style="color: var(--primary-glow); font-weight: 800;">&lt;/&gt;</span> Full Stack Developer</p>
 
         <div class="cta-group">
           <a href="#" class="resume-btn" id="resumeTriggerBtn">Resume</a>
@@ -67,19 +77,19 @@
           <a href="https://github.com/SriramGandhiS" target="_blank" class="nav-social-btn">
             <img src="/images/github.png" alt="GitHub">
           </a>
-          <a href="https://www.linkedin.com/in/sriram73/" target="_blank">
+          <a href="https://linkedin.com/in/sriram-s-432a99296" target="_blank">
             <img src="/images/linked.png" alt="LinkedIn">
           </a>
         </div>
       </div>
-      <div id="lanyard-root"></div>
+
     </div>
 
     <!-- 3D Computer Desktop Decoration (Downloaded Model) -->
-    <div class="hero-3d-model">
+    <div class="hero-3d-model desktop-only">
       <model-viewer src="/images/gaming_model.glb" camera-controls auto-rotate auto-rotate-delay="0"
         rotation-per-second="10deg" disable-zoom shadow-intensity="1" exposure="1.2" environment-image="neutral"
-        min-camera-orbit="auto 90deg auto" max-camera-orbit="auto 90deg auto" style="outline: none;"
+        style="outline: none;"
         alt="A 3D model of a gaming computer">
 
         <!-- Pinned Watermark -->
@@ -151,11 +161,9 @@
 
         <p class="about-eyebrow">— WHO AM I</p>
         <h2 class="about-heading">Sriram <span class="about-heading-accent">S</span></h2>
-        <p class="about-sub">3rd Year CSE &middot; 6th Semester &middot; PSNACET, Madurai</p>
+        <p class="about-sub">Cloud &amp; AI Integration &middot; Mobile App Developer &middot; 3rd Year CSE</p>
         <p class="about-desc">
-          I build things that work. Over 100+ days of consistent development &mdash;
-          Java backends, Python automation, and modern web frontends.
-          3rd year, 6th semester, graduating 2027 &mdash; open to internships and full-time roles.
+          Computer Science undergraduate with hands-on experience building and deploying full-stack web and mobile applications with AI-based features. Proficient in RESTful architecture and modern development tools. National hackathon winner with strong project-based experience.
         </p><!-- Stats Row -->
         <div class="about-stats">
           <div class="stat-item">
@@ -185,27 +193,27 @@
         <!-- Skill Bars -->
         <div class="skill-bars">
           <div class="skill-bar-row">
-            <div class="skill-bar-label"><span>Java</span><span>75%</span></div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-width="75"></div>
-            </div>
-          </div>
-          <div class="skill-bar-row">
-            <div class="skill-bar-label"><span>Python</span><span>70%</span></div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-width="70"></div>
-            </div>
-          </div>
-          <div class="skill-bar-row">
-            <div class="skill-bar-label"><span>HTML / CSS</span><span>90%</span></div>
+            <div class="skill-bar-label"><span>React.js / Next.js</span><span>90%</span></div>
             <div class="skill-bar-track">
               <div class="skill-bar-fill" data-width="90"></div>
             </div>
           </div>
           <div class="skill-bar-row">
-            <div class="skill-bar-label"><span>Django</span><span>65%</span></div>
+            <div class="skill-bar-label"><span>Node.js / Python</span><span>85%</span></div>
             <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-width="65"></div>
+              <div class="skill-bar-fill" data-width="85"></div>
+            </div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>Java</span><span>80%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="80"></div>
+            </div>
+          </div>
+          <div class="skill-bar-row">
+            <div class="skill-bar-label"><span>React Native / Flutter</span><span>75%</span></div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="75"></div>
             </div>
           </div>
         </div>
@@ -240,7 +248,8 @@
         <!-- COL 3: Cert Collage + LeetCode -->
         <div class="about-right-col">
 
-          <!-- Fanned Cert Collage -->
+          <!-- Fanned Cert Collage (hidden from landing page) -->
+          <!--
           <div class="cert-collage-wrap">
             <p class="collage-label">HackerRank &middot; 7 Certificates</p>
             <div class="cert-fan" id="certFan">
@@ -255,6 +264,7 @@
             <p class="collage-sub">Python &middot; Java &middot; SQL &middot; Problem Solving &middot; CSS &middot; JS
               &middot; Node.js</p>
           </div>
+          -->
 
           <!-- LeetCode Panel -->
           <div class="lc-panel">
@@ -286,6 +296,17 @@
         </div>
       </div>
   </section>
+  
+  <!-- INFINITE TEXT TICKER -->
+  <div class="ticker-container">
+    <div class="ticker-track">
+      <span class="ticker-text">
+        FULL STACK DEVELOPER <span>•</span> AI INTEGRATION <span>•</span> NATIONAL HACKATHON WINNER <span>•</span> UI/UX DESIGNER <span>•</span> CLOUD ARCHITECT <span>•</span> PROBLEM SOLVER <span>•</span> 24/7 BUILDER <span>•</span> REACT <span>•</span> NODE.JS <span>•</span> PYTHON <span>•</span> THREE.JS <span>•</span> GSAP <span>•</span> 
+        FULL STACK DEVELOPER <span>•</span> AI INTEGRATION <span>•</span> NATIONAL HACKATHON WINNER <span>•</span> UI/UX DESIGNER <span>•</span> CLOUD ARCHITECT <span>•</span> PROBLEM SOLVER <span>•</span> 24/7 BUILDER <span>•</span> REACT <span>•</span> NODE.JS <span>•</span> PYTHON <span>•</span> THREE.JS <span>•</span> GSAP <span>•</span> 
+      </span>
+    </div>
+  </div>
+
 
 
 
@@ -326,7 +347,7 @@
           </div>
         </div>
 
-        <!-- Both images side by side with glow -->
+        <!-- Images side by side with glow -->
         <div class="achv-images-row">
           <div class="achv-brochure-glow">
             <img src="/images/hack.jpeg" alt="Team receiving 1st prize" loading="lazy">
@@ -335,7 +356,31 @@
             <img src="/images/temp.jpeg" alt="Event Brochure" loading="lazy">
           </div>
         </div>
+      </div>
 
+      <!-- Divider -->
+      <div style="width: 100px; height: 2px; background: rgba(255, 0, 127, 0.2); margin: 40px auto;"></div>
+
+      <!-- Second Achievement -->
+      <div class="achv-right" style="text-align: center; padding-top: 0;">
+        <p class="about-eyebrow">— RECOGNITION</p>
+        <h2 class="about-heading">Inter-College <span class="about-heading-accent">Technical Recognition</span></h2>
+        <p class="about-sub">Technical Innovation &amp; Prototyping</p>
+
+        <p class="about-desc" style="margin: 0 auto;">
+          Recognised for technical innovation and rapid prototyping; appreciated by 
+          faculty and industry judges. 
+          <br><br>
+          • Distinguished Technical Recognition: Commended by the Head of Department and Vice President, SISA Information 
+          Security Pvt. Ltd., for technical excellence and professional conduct.
+        </p>
+
+        <!-- New Image for this achievement -->
+        <div class="achv-images-row">
+          <div class="achv-brochure-glow">
+            <img src="/images/hack-2.jpg" alt="Technical Recognition Certificate" loading="lazy">
+          </div>
+        </div>
       </div>
 
     </div>
@@ -381,26 +426,25 @@
         </div>
       </div>
 
-      <!-- Project 2: Smart Bus Tracking -->
+      <!-- Project 2: Event Registration System -->
       <div class="jsm-project-card">
         <div class="card-glare"></div>
         <div class="jsm-card-image-box scroll-box">
-          <img src="/images/proj-bus.png" alt="Bus Tracking Live Preview" class="jsm-card-img scroll-anim" loading="lazy">
+          <img src="/images/temp.jpeg" alt="Event Registration Preview" class="jsm-card-img scroll-anim" loading="lazy">
           <div class="jsm-card-img-overlay">
-            <div class="jsm-github-icon" onclick="window.open('https://github.com/SriramGandhiS', '_blank')">
-              <img src="/images/github.png" alt="github">
+            <div class="jsm-github-icon jsm-live-icon"
+              onclick="window.open('https://utsav2k26.netlify.app', '_blank')">
+              <span>↗</span>
             </div>
           </div>
         </div>
         <div class="jsm-card-content">
-          <h3>Smart Bus Tracking <span class="status-badge" style="font-size: 0.6rem; margin-bottom:0">Under
-              Process</span></h3>
-          <p>Android Application designed to track buses in real-time, providing estimated arrival times and route
-            management.</p>
+          <h3>Event Registration System</h3>
+          <p>Engineered a serverless registration portal managing 150+ participants across 10 events with zero data loss and multi-layer form validation.</p>
           <div class="jsm-card-tags">
-            <p class="jsm-tag blue-text-gradient">#java</p>
-            <p class="jsm-tag green-text-gradient">#android</p>
-            <p class="jsm-tag pink-text-gradient">#firebase</p>
+            <p class="jsm-tag blue-text-gradient">#javascript</p>
+            <p class="jsm-tag green-text-gradient">#html5</p>
+            <p class="jsm-tag pink-text-gradient">#app-script</p>
           </div>
         </div>
       </div>
@@ -444,13 +488,12 @@
           </div>
         </div>
         <div class="jsm-card-content">
-          <h3>Hiresense</h3>
-          <p>AI-Powered Recruitment & Applicant Tracking Platform to streamline hiring pipelines and analyze candidate
-            data efficiently.</p>
+          <h3>HireSense – AI-Powered Mock Interview Platform</h3>
+          <p>Built an end-to-end mock interview platform that dynamically generates personalised question sets based on candidate response patterns using NLP.</p>
           <div class="jsm-card-tags">
-            <p class="jsm-tag blue-text-gradient">#react</p>
-            <p class="jsm-tag green-text-gradient">#ai</p>
-            <p class="jsm-tag pink-text-gradient">#nodejs</p>
+            <p class="jsm-tag blue-text-gradient">#react-native</p>
+            <p class="jsm-tag green-text-gradient">#node.js</p>
+            <p class="jsm-tag pink-text-gradient">#claude-ai</p>
           </div>
         </div>
       </div>
@@ -468,21 +511,25 @@
         <p class="jsm-section-subtext">GET IN TOUCH</p>
         <h2 class="jsm-section-headtext">Contact.</h2>
 
-        <form class="jsm-contact-form">
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="jsm-contact-form">
+          <!-- Web3Forms Access Key -->
+          <input type="hidden" name="access_key" value="5064c2a2-a780-45ad-9796-9d8fc275b189">
+          
           <label class="jsm-form-label">
             <span class="jsm-form-text">Your Name</span>
-            <input type="text" name="name" placeholder="What's your name?" class="jsm-form-input">
+            <input type="text" name="name" required placeholder="What's your name?" class="jsm-form-input">
           </label>
           <label class="jsm-form-label">
             <span class="jsm-form-text">Your Email</span>
-            <input type="email" name="email" placeholder="What's your email?" class="jsm-form-input">
+            <input type="email" name="email" required placeholder="What's your email?" class="jsm-form-input">
           </label>
           <label class="jsm-form-label">
             <span class="jsm-form-text">Your Message</span>
-            <textarea rows="7" name="message" placeholder="What do you want to say?" class="jsm-form-input"></textarea>
+            <textarea rows="7" name="message" required placeholder="What do you want to say?" class="jsm-form-input"></textarea>
           </label>
 
-          <button type="submit" class="jsm-submit-btn">Send</button>
+          <button type="submit" id="submit-btn" class="jsm-submit-btn">Send Message</button>
+          <p id="form-status" style="margin-top: 15px; font-size: 0.9rem; font-weight: 500;"></p>
         </form>
       </div>
 
@@ -702,7 +749,7 @@
       <!-- View 1: Grid of Companies -->
       <div class="cert-grid-view" id="certGridView">
         <h2>My Certifications</h2>
-        <p class="cert-subtitle">Select a company to view credentials</p>
+        <p class="cert-subtitle">Select a company to view credentials. Hover over cards to reveal full certificates.</p>
         <div class="company-grid">
           <div class="company-card" data-company="AWS">
             <div class="card-inner">
@@ -753,7 +800,7 @@
                 </svg>
               </div>
               <h3>HackerRank</h3>
-              <p>7 Certificates</p>
+              <p>5 Certificates</p>
             </div>
           </div>
           <div class="company-card" data-company="Arduino">
