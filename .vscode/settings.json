@@ -1,3 +1,21 @@
 {
-    "liveServer.settings.port": 5502
+    "java.import.gradle.java.home": "C:\\Program Files\\Java\\jre1.8.0_471",
+    "python.languageServer": "Default",
+    "redhat.telemetry.enabled": true,
+    "faahhh.enable": false,
+    "liveServer.settings.port": 5502,
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "claudeCode.preferredLocation": "panel",
+    "claudeCode.environmentVariables": [
+        {
+            "name": "ANTHROPIC_BASE_URL",
+            "value": "http://127.0.0.1:3000"
+        },
+        {
+            "name": "ANTHROPIC_AUTH_TOKEN",
+            "value": "freecc"
+        }
+    ],
+    "terminal.integrated.enableMultiLinePasteWarning": "never"
 }

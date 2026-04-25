@@ -1,7 +1,10 @@
 .pill-nav-container {
-    position: absolute;
-    top: 1em;
-    z-index: 99;
+    position: relative;
+    z-index: 10000;
+    --base: var(--bg-color);
+    --pill-bg: var(--card-bg);
+    --pill-text: var(--text-color);
+    --hover-text: #fff; /* Keep white on primary hover */
 }
 
 @media (max-width: 768px) {
@@ -158,6 +161,35 @@
 
 .mobile-only {
     display: none;
+}
+
+.theme-toggle-btn {
+    width: var(--nav-h);
+    height: var(--nav-h);
+    border-radius: 50%;
+    background: var(--base, #000);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 8px;
+    color: var(--pill-bg, #fff);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
+    z-index: 10;
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.1) rotate(15deg);
+    background: var(--pill-bg, #fff);
+    color: var(--base, #000);
+}
+
+@media (max-width: 768px) {
+    .theme-toggle-btn {
+        margin-left: 0;
+        margin-right: 8px;
+    }
 }
 
 @media (max-width: 768px) {

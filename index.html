@@ -9,6 +9,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  <script>
+    (function() {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    })();
+  </script>
 </head>
 
 <body>
@@ -25,7 +30,7 @@
   </div>
 
   <!-- NAVBAR -->
-  <div id="navbar-root"></div>
+  <div id="navbar-portal"></div>
   <div id="lanyard-body-root" style="position: absolute; top: 0; left: 0; width: 100%; height: 100vh; pointer-events: none; z-index: 20; overflow: hidden;"></div>
   <nav class="navbar">
     <!-- Left: Brand -->
@@ -43,6 +48,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="academic/index.html" class="nav-academic" target="_blank">Academic</a></li>
+      <li id="theme-toggle-root"></li>
     </ul>
 
     <!-- Hamburger icon for mobile -->
