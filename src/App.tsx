@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Download, FileBadge, X, ExternalLink, Cloud, Database, Code2, Cpu, GraduationCap } from 'lucide-react';
 
 const GithubIcon = ({ className }: { className?: string }) => (
