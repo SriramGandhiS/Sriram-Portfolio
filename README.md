@@ -1,73 +1,77 @@
-# React + TypeScript + Vite
+# Sriram S | Software Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, premium portfolio designed to showcase software engineering expertise, AI integrations, and technical achievements. Built with a focus on fluid motion, immersive 3D-like interactions, and a cinematic user experience.
 
-Currently, two official plugins are available:
+![Portfolio Preview](/public/images/portfolio-template.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Live Demo
+**[sriram.website](https://sriram.website)**
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+This project is built using the latest modern web technologies for maximum performance and visual impact:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Core**: [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite 8](https://vitejs.dev/) (Ultra-fast development & bundling)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) (Next-gen styling engine)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) (Production-grade motion physics)
+- **Icons**: [Lucide React](https://lucide.dev/) (Clean, consistent iconography)
+- **Deployment**: [GitHub Actions](https://github.com/features/actions) (Automated CI/CD)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## ✨ Key Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 1. Immersive UI Architecture
+- **Magnet Interaction**: Custom-built magnet component that pulls elements toward the cursor, creating a tactile feel.
+- **Scroll-Linked Stacking Cards**: Projects are presented as a stack of cards that layer on top of each other as the user scrolls, inspired by high-end design standards.
+- **Cinematic Motion**: Smooth fade-ins and scroll-bound text reveals that guide the user's attention through the narrative.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Forensic Project Showcase
+- **Video Covers**: Projects feature high-quality video previews instead of static images for a more dynamic presentation.
+- **Integrated PDF Viewer**: View resumes and professional certifications directly within a custom-built modal without leaving the site.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 3. Professional Identity
+- **Credential Dashboard**: A dedicated section for certifications from AWS, MongoDB, HackerRank, and more.
+- **Automated Contact**: Integrated with Web3Forms for direct, reliable communication.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 🏗️ Getting Started
+
+### Prerequisites
+- Node.js 20+
+- npm
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/SriramGandhiS/Sriram-Portfolio.git
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Build for production:
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 📜 License
+This project is proprietary. All designs and code are owned by **Sriram S**.
+
+---
+
+Developed with ⚡ by [Sriram S](https://github.com/SriramGandhiS)
