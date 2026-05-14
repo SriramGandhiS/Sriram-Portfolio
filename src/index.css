@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-light: #D7E2EA;
+  --color-brand-dark: #0C0C0C;
+  --font-sans: 'Kanit', sans-serif;
+}
+
+@layer base {
+  html, body, #root {
+    @apply bg-[#0C0C0C] text-[#D7E2EA] font-sans m-0 p-0 box-border;
+  }
+}
+
+@layer utilities {
+  .hero-heading {
+    background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+}
