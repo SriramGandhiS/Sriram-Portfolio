@@ -2,8 +2,6 @@
 
 A high-performance, premium portfolio designed to showcase software engineering expertise, AI integrations, and technical achievements. Built with a focus on fluid motion, immersive 3D-like interactions, and a cinematic user experience.
 
-![Portfolio Preview](/public/images/portfolio-template.png)
-
 ## 🚀 Live Demo
 **[sriram.website](https://sriram.website)**
 
