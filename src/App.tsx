@@ -221,11 +221,16 @@ const CredentialsModal = ({ activeModal, setActiveModal }: { activeModal: string
         {/* Body */}
         <div className="p-4 sm:p-8 overflow-y-auto flex-1 flex flex-col">
           {selectedPdf ? (
-            <div className="w-full flex-1 rounded-2xl overflow-hidden bg-zinc-900 relative border border-[#D7E2EA]/10 min-h-[400px] md:min-h-[500px]">
-              <iframe src={selectedPdf} className="w-full h-full border-none" title="PDF Viewer" />
-              <div className="absolute top-4 right-4 flex gap-4">
-                 <a href={selectedPdf} target="_blank" rel="noreferrer" className="px-5 py-2.5 bg-[#B600A8] text-white rounded-full font-bold text-sm tracking-widest uppercase hover:bg-[#B600A8]/80 transition-colors shadow-lg flex items-center gap-2">
-                   <ExternalLink size={16} /> Open in Browser
+            <div className="w-full flex-1 rounded-2xl overflow-hidden bg-[#0C0C0C] relative border border-[#D7E2EA]/10 flex flex-col" style={{ height: 'calc(85vh - 120px)' }}>
+              <iframe 
+                src={selectedPdf} 
+                className="w-full h-full border-none flex-1" 
+                title="PDF Viewer" 
+                style={{ minHeight: '100%' }}
+              />
+              <div className="absolute top-4 right-8 flex gap-4">
+                 <a href={selectedPdf} target="_blank" rel="noreferrer" className="px-5 py-2.5 bg-[#B600A8] text-white rounded-full font-bold text-xs tracking-widest uppercase hover:bg-[#B600A8]/80 transition-all shadow-lg flex items-center gap-2 hover:scale-105 active:scale-95">
+                   <ExternalLink size={14} /> Open in Browser
                  </a>
               </div>
             </div>
