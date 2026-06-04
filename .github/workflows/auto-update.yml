@@ -1,0 +1,59 @@
+name: Daily Auto Commit
+
+on:
+  schedule:
+    # Runs daily at a random early morning hour (e.g. 02:30 UTC / 8:00 AM IST)
+    - cron: '30 2 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Make commits
+        run: |
+          git config --global user.email "iamramm8@gmail.com"
+          git config --global user.name "Sriram Gandhi S"
+          
+          ADD_MSGS=("docs: minor readme update" "docs: update documentation" "docs: readme formatting" "chore: update readme" "docs: improve readme clarity" "docs: polish readme content" "docs: readme micro-update" "chore: readme touch-up" "docs: clean up readme")
+          DEL_MSGS=("docs: remove trailing whitespace" "docs: clean readme formatting" "chore: trim readme" "docs: fix readme spacing" "docs: revert readme changes" "docs: readme cleanup" "chore: readme polish" "docs: remove extra chars" "docs: tidy readme")
+          
+          README="README.md"
+          if [ ! -f "$README" ]; then
+            README="readme.md"
+          fi
+          if [ ! -f "$README" ]; then
+            README="Readme.md"
+          fi
+          if [ ! -f "$README" ]; then
+            echo "README not found!"
+            exit 1
+          fi
+          
+          for i in {1..18}
+          do
+            echo "Starting cycle $i"
+            
+            # Step 1: ADD
+            echo " " >> $README
+            msg_add=${ADD_MSGS[$RANDOM % ${#ADD_MSGS[@]}]}
+            git add $README
+            git commit -m "$msg_add"
+            git push origin HEAD:${{ github.ref_name }}
+            
+            sleep $((3 + RANDOM % 4))
+            
+            # Step 2: DEL
+            sed -i '$d' $README
+            msg_del=${DEL_MSGS[$RANDOM % ${#DEL_MSGS[@]}]}
+            git add $README
+            git commit -m "$msg_del"
+            git push origin HEAD:${{ github.ref_name }}
+            
+            sleep $((5 + RANDOM % 6))
+          done
