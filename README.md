@@ -73,4 +73,4 @@ This project is proprietary. All designs and code are owned by **Sriram S**.
 ---
 
 Developed with ⚡ by [Sriram S](https://github.com/SriramGandhiS)
-. . .  . ..
+. . .  . ... 
