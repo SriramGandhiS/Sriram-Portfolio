@@ -1,4 +1,4 @@
-# Sriram S | Software Developer Portfolio
+﻿# Sriram S | Software Developer Portfolio
 
 A high-performance, premium portfolio designed to showcase software engineering expertise, AI integrations, and technical achievements. Built with a focus on fluid motion, immersive 3D-like interactions, and a cinematic user experience.
 
@@ -73,3 +73,4 @@ This project is proprietary. All designs and code are owned by **Sriram S**.
 ---
 
 Developed with ⚡ by [Sriram S](https://github.com/SriramGandhiS)
+. 
