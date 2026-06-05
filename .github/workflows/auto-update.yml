@@ -20,9 +20,6 @@ jobs:
           git config --global user.email "iamramm8@gmail.com"
           git config --global user.name "Sriram Gandhi S"
           
-          ADD_MSGS=("docs: minor readme update" "docs: update documentation" "docs: readme formatting" "chore: update readme" "docs: improve readme clarity" "docs: polish readme content" "docs: readme micro-update" "chore: readme touch-up" "docs: clean up readme")
-          DEL_MSGS=("docs: remove trailing whitespace" "docs: clean readme formatting" "chore: trim readme" "docs: fix readme spacing" "docs: revert readme changes" "docs: readme cleanup" "chore: readme polish" "docs: remove extra chars" "docs: tidy readme")
-          
           FILES=("TODO.md" "BUGS.md" "testing-notes.txt" "future-updates.md" "dev-notes.md")
           
           # Randomize cycle count between 8 and 11 (16 to 22 commits)
@@ -36,6 +33,71 @@ jobs:
             # Pick a random developer note file to modify
             SELECTED_FILE=${FILES[$RANDOM % ${#FILES[@]}]}
             echo "Starting cycle $i on file: $SELECTED_FILE"
+            
+            # Define project-specific natural commit messages based on file type
+            case "$SELECTED_FILE" in
+              "TODO.md")
+                ADD_MSGS=(
+                  "docs: add responsive mobile layout checklist to todo"
+                  "docs: update project portfolio component tasks"
+                  "docs: mark footer layout styling as active in todo"
+                  "docs: update lighthouse optimization checklist items"
+                )
+                DEL_MSGS=(
+                  "docs: clean up completed todo items"
+                  "docs: remove resolved tasks from todo checklist"
+                  "docs: formatting adjustments in todo list"
+                )
+                ;;
+              "BUGS.md")
+                ADD_MSGS=(
+                  "docs: add Safari mobile menu touch bug to tracker"
+                  "docs: document console warn on key prop in bug log"
+                  "docs: log image layout shift rendering issue"
+                )
+                DEL_MSGS=(
+                  "docs: resolve and remove tracked items in bug log"
+                  "docs: clean up obsolete bug status reports"
+                  "docs: minor clean up of bugs tracking document"
+                )
+                ;;
+              "future-updates.md")
+                ADD_MSGS=(
+                  "docs: add 3D component roadmap to future updates"
+                  "docs: write draft for dark mode support plan"
+                  "docs: add portfolio blog section integration ideas"
+                )
+                DEL_MSGS=(
+                  "docs: clean up future updates formatting"
+                  "docs: refine feature updates roadmap outline"
+                  "docs: normalize layout of future updates list"
+                )
+                ;;
+              "testing-notes.txt")
+                ADD_MSGS=(
+                  "test: log local dev testing on desktop Chrome/Safari"
+                  "test: document hover animation checks in testing notes"
+                  "test: update local responsive layout check logs"
+                )
+                DEL_MSGS=(
+                  "test: prune old browser test reports in testing notes"
+                  "test: formatting updates to testing notes"
+                  "test: clean up testing notes checklist"
+                )
+                ;;
+              "dev-notes.md")
+                ADD_MSGS=(
+                  "docs: write development setup notes for vite config"
+                  "docs: update build package optimization details"
+                  "docs: document Tailwind CSS configuration changes"
+                )
+                DEL_MSGS=(
+                  "docs: clean up formatting in dev notes"
+                  "docs: remove deprecated package instructions"
+                  "docs: normalize dev notes layout"
+                )
+                ;;
+            esac
             
             # Step 1: ADD
             echo " " >> $SELECTED_FILE

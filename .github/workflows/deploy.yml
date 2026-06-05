@@ -11,7 +11,7 @@ on:
       - 'testing-notes.txt'
       - 'future-updates.md'
       - 'dev-notes.md'
-      - '.github/workflows/auto-update.yml'
+      - '.github/workflows/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
