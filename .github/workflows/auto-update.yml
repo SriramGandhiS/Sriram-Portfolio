@@ -2,8 +2,8 @@ name: Daily Auto Commit
 
 on:
   schedule:
-    # Runs daily at midnight IST (08:00 PM UTC / 1:30 AM IST)
-    - cron: '0 20 * * *'
+    # Runs daily at midnight IST (06:30 PM UTC / 12:00 AM IST)
+    - cron: '30 18 * * *'
   workflow_dispatch: # Allows manual trigger from GitHub UI
 
 jobs:
@@ -106,7 +106,8 @@ jobs:
             git commit -m "$msg_add"
             git push origin HEAD:${{ github.ref_name }}
             
-            sleep $((3 + RANDOM % 4))
+            # Sleep between ADD and DEL (random 20 to 45 minutes)
+            sleep $((1200 + RANDOM % 1500))
             
             # Step 2: DEL
             sed -i '$d' $SELECTED_FILE
@@ -115,5 +116,6 @@ jobs:
             git commit -m "$msg_del"
             git push origin HEAD:${{ github.ref_name }}
             
-            sleep $((5 + RANDOM % 6))
+            # Sleep between cycles (random 30 to 60 minutes)
+            sleep $((1800 + RANDOM % 1800))
           done
