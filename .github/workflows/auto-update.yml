@@ -2,8 +2,8 @@ name: Daily Auto Commit
 
 on:
   schedule:
-    # Runs daily at a random early morning hour (e.g. 02:30 UTC / 8:00 AM IST)
-    - cron: '30 2 * * *'
+    # Runs daily at midnight IST (08:00 PM UTC / 1:30 AM IST)
+    - cron: '0 20 * * *'
   workflow_dispatch: # Allows manual trigger from GitHub UI
 
 jobs:
@@ -35,7 +35,13 @@ jobs:
             exit 1
           fi
           
-          for i in {1..18}
+          # Randomize cycle count between 8 and 11 (16 to 22 commits)
+          MIN_CYCLES=8
+          MAX_CYCLES=11
+          CYCLES=$((MIN_CYCLES + RANDOM % (MAX_CYCLES - MIN_CYCLES + 1)))
+          echo "Selected random cycle count: $CYCLES"
+          
+          for i in $(seq 1 $CYCLES)
           do
             echo "Starting cycle $i"
             
