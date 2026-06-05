@@ -1,0 +1,4 @@
+=== Local Testing Notes ===
+- Checked mobile browser simulation
+- Lighthouse scores looks good (Performance: 92, Accessibility: 95)
+- Safari hover animation working
