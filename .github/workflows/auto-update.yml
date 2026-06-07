@@ -2,8 +2,8 @@ name: Daily Auto Commit
 
 on:
   schedule:
-    # Runs daily at morning IST (12:30 AM UTC / 6:00 AM IST)
-    - cron: '30 0 * * *'
+    # Runs weekly on Sundays at morning IST (12:30 AM UTC / 6:00 AM IST)
+    - cron: '30 0 * * 0'
   workflow_dispatch: # Allows manual trigger from GitHub UI
 
 jobs:
@@ -17,9 +17,6 @@ jobs:
 
       - name: Make commits
         run: |
-          git config --global user.email "iamramm8@gmail.com"
-          git config --global user.name "Sriram Gandhi S"
-          
           FILES=("TODO.md" "BUGS.md" "testing-notes.txt" "future-updates.md" "dev-notes.md")
           
           # Randomize cycle count between 1 and 2 (2 to 4 commits)
@@ -30,9 +27,16 @@ jobs:
           
           for i in $(seq 1 $CYCLES)
           do
+            # Randomly select commit author for this cycle to look like active collaboration
+            AUTHORS=("Sriram Gandhi S|iamramm8@gmail.com" "Rizz Architect|srirams23cs@psnacet.edu.in")
+            SELECTED_AUTHOR=${AUTHORS[$RANDOM % 2]}
+            IFS="|" read -r AUTHOR_NAME AUTHOR_EMAIL <<< "$SELECTED_AUTHOR"
+            git config --global user.name "$AUTHOR_NAME"
+            git config --global user.email "$AUTHOR_EMAIL"
+
             # Pick a random developer note file to modify
             SELECTED_FILE=${FILES[$RANDOM % ${#FILES[@]}]}
-            echo "Starting cycle $i on file: $SELECTED_FILE"
+            echo "Starting cycle $i on file: $SELECTED_FILE by $AUTHOR_NAME"
             
             # Define project-specific natural commit messages based on file type
             case "$SELECTED_FILE" in
