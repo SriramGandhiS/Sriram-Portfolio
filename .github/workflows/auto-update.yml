@@ -108,6 +108,7 @@ jobs:
             msg_add=${ADD_MSGS[$RANDOM % ${#ADD_MSGS[@]}]}
             git add $SELECTED_FILE
             git commit -m "$msg_add"
+            git pull origin ${{ github.ref_name }} --rebase
             git push origin HEAD:${{ github.ref_name }}
             
             # Sleep between ADD and DEL (random 20 to 45 minutes)
@@ -118,6 +119,7 @@ jobs:
             msg_del=${DEL_MSGS[$RANDOM % ${#DEL_MSGS[@]}]}
             git add $SELECTED_FILE
             git commit -m "$msg_del"
+            git pull origin ${{ github.ref_name }} --rebase
             git push origin HEAD:${{ github.ref_name }}
             
             # Sleep between cycles (random 30 to 60 minutes)
